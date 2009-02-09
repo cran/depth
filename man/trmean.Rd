@@ -8,7 +8,9 @@
 Computes a sample trimmed mean based on the Tukey depth, the Liu depth or the Oja depth.
 }
 \usage{
-trmean(x, alpha, W = function(dep, alpha){return(1)}, method = "Tukey", ndir = 1000, approx = FALSE, eps = 1e-8, ...)
+trmean(x, alpha, W = function(dep, alpha){return(1)}, 
+   method = "Tukey", ndir = 1000, approx = FALSE, 
+   eps = 1e-8, ...)
 }
 \arguments{
   \item{x}{The data as a matrix, data frame or list. If it is a matrix or data frame, then each row is viewed as one bivariate observation. If it is a list, all components must be numerical vectors of equal length (coordinates of observations).}
@@ -50,8 +52,11 @@ x <- matrix(rnorm(2100), nc = 3)
 trmean(x, .1, approx = TRUE)
 
 ## trimmed mean with a non constant weight function
-W1 <-
-function(x,alpha,epsilon) {(2*(x-alpha)^2/epsilon^2)*(alpha<=x)*(x<alpha+epsilon/2)+(-2*(x-alpha)^2/epsilon^2+4*(x-alpha)/epsilon-1)*(alpha+epsilon/2<=x)*(x<alpha+epsilon)+(alpha+epsilon<=x)}
+W1 <-function(x,alpha,epsilon) {
+  (2*(x-alpha)^2/epsilon^2)*(alpha<=x)*(x<alpha+epsilon/2)+
+  (-2*(x-alpha)^2/epsilon^2+4*(x-alpha)/epsilon-1)*
+  (alpha+epsilon/2<=x)*(x<alpha+epsilon)+(alpha+epsilon<=x)
+}
 set.seed(345)
 x <- matrix(rnorm(210), nc = 3)
 trmean(x, .1, W = W1, epsilon = .05)

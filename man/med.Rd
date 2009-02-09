@@ -8,7 +8,10 @@
 Computes the median of a multivariate data set.
 }
 \usage{
-med(x, method = "Tukey", approx = FALSE, eps = 1e-8, maxit = 200, mustdith = FALSE, maxdith = 50, dithfactor = 10, factor = 0.8, nstp = floor(5*n^0.3*p), ntry = 10*(p+1), nalt = 4*(p+1), ndir = 1000)
+med(x, method = "Tukey", approx = FALSE, eps = 1e-8, maxit = 200,
+   mustdith = FALSE, maxdith = 50, dithfactor = 10, factor = 0.8, 
+   nstp = floor(5*n^0.3*p), ntry = 10*(p+1), nalt = 4*(p+1), 
+   ndir = 1000)
 }
 \arguments{
   \item{x}{The data as a matrix, data frame or list. If it is a matrix or data frame, then each row is viewed as one multivariate observation. If it is a list, all components must be numerical vectors of equal length (coordinates of observations).}

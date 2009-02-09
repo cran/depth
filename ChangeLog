@@ -1,0 +1,12 @@
+
+1.0-0 (2008-10-26):
+
+ - Initial release.
+ 
+
+1.0-1 (2008-02-09):
+
+ - Fixed syntax error in DESCRIPTION file that caused only one author to appear
+   in the CRAN listings.
+ - Edited documentation to avoid overfull lines in the PDF version of the help
+   files.

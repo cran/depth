@@ -12,7 +12,8 @@
 Computes the depth of a point with respect to a multivariate data set.
 }
 \usage{
-depth(u, x, method = "Tukey", approx = FALSE, eps = 1e-8, ndir = 1000)
+depth(u, x, method = "Tukey", approx = FALSE, 
+   eps = 1e-8, ndir = 1000)
 }
 \arguments{
   \item{u}{Numerical vector whose depth is to be calculated. Dimension has to be the same as that of the observations.}

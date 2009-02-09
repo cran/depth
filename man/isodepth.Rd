@@ -8,7 +8,10 @@
 Draws a contour plot of Tukey's depth function.
 }
 \usage{
-isodepth(x, dpth = NULL, output = FALSE, twodim = TRUE, mustdith = FALSE, maxdith = 50, dithfactor = 10, trace.errors = TRUE, eps = 1e-8, factor = 0.8, xlab = "X", ylab = "Y", zlab = "Tukey's depth", colcontours = NULL, ...)
+isodepth(x, dpth = NULL, output = FALSE, twodim = TRUE, 
+   mustdith = FALSE, maxdith = 50, dithfactor = 10, 
+   trace.errors = TRUE, eps = 1e-8, factor = 0.8, xlab = "X", 
+   ylab = "Y", zlab = "Tukey's depth", colcontours = NULL, ...)
 }
 \arguments{
   \item{x}{Bivariate data as a matrix, data frame or list. If it is a matrix or data frame, then each row is viewed as one bivariate observation. If it is a list, both components must be numerical vectors of equal length (coordinates of observations).}

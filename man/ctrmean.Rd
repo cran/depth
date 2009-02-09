@@ -8,7 +8,8 @@
 Computes the centroid of a Tukey depth-based trimmed region.
 }
 \usage{
-ctrmean(x ,alpha, eps = 1e-8, mustdith = FALSE, maxdith = 50, dithfactor = 10 ,factor = .8)
+ctrmean(x ,alpha, eps = 1e-8, mustdith = FALSE, maxdith = 50, 
+   dithfactor = 10 ,factor = .8)
 }
 \arguments{
   \item{x}{Bivariate data as a matrix, data frame or list. If it is a matrix or data frame, then each row is viewed as one bivariate observation. If it is a list, both components must be numerical vectors of equal length (coordinates of observations).}

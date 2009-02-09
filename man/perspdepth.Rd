@@ -8,7 +8,8 @@
 Draws a perspective plot of the surface of a depth function over the x-y plane.
 }
 \usage{
-perspdepth(x, method = "Tukey", output = FALSE, tt = 50, xlab = "X", ylab = "Y", zlab = NULL, col = NULL, ...)
+perspdepth(x, method = "Tukey", output = FALSE, tt = 50, 
+   xlab = "X", ylab = "Y", zlab = NULL, col = NULL, ...)
 }
 \arguments{
   \item{x}{Bivariate data as a matrix, data frame or list. If it is a matrix or data frame, then each row is viewed as one bivariate observation. If it is a list, both components must be numerical vectors of equal length (coordinates of observations).}
