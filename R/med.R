@@ -1,25 +1,16 @@
-med=function(x,method="Tukey",approx=FALSE,eps=1e-8,maxit=200,mustdith=FALSE,maxdith=50,dithfactor=10,factor=0.8,nstp=floor(5*n^0.3*p),ntry=10*(p+1),nalt=4*(p+1),ndir=1000){
-  UseMethod("med")
-}
+med=function(x,method="Tukey",approx=FALSE,eps=1e-8,maxit=200,mustdith=FALSE,maxdith=50,dithfactor=10,factor=0.8,nstp=NULL,ntry=NULL,nalt=NULL,ndir=1000){
 
-med.data.frame=function(x,method="Tukey",approx=FALSE,eps=1e-8,maxit=200,mustdith=FALSE,maxdith=50,dithfactor=10,factor=0.8,nstp=floor(5*n^0.3*p),ntry=10*(p+1),nalt=4*(p+1),ndir=1000){
-  x=as.matrix(x)
-  NextMethod("med",x)
-}
-
-med.list=function(x,method="Tukey",approx=FALSE,eps=1e-8,maxit=200,mustdith=FALSE,maxdith=50,dithfactor=10,factor=0.8,nstp=floor(5*n^0.3*p),ntry=10*(p+1),nalt=4*(p+1),ndir=1000){
-  m=length(x)
-  n=length(x[[1]])
-  y=matrix(0,n,m)
-  for(i in 1:m){
-    y[,i]=x[[i]]
-    if(length(x[[i]])!=n){ stop("When using a list, each element must be a vector of the same length.") }
+  if(is.data.frame(x)) x=as.matrix(x)
+  if(is.list(x)) {
+    m=length(x)
+    n=length(x[[1]])
+    y=matrix(0,n,m)
+    for(i in 1:m){
+      y[,i]=x[[i]]
+      if(length(x[[i]])!=n){ stop("When using a list, each element must be a vector of the same length.") }
+    }
+    x=y
   }
-  x=y
-  NextMethod("med",x)
-}
-
-med.default=function(x,method="Tukey",approx=FALSE,eps=1e-8,maxit=200,mustdith=FALSE,maxdith=50,dithfactor=10,factor=0.8,nstp=floor(5*n^0.3*p),ntry=10*(p+1),nalt=4*(p+1),ndir=1000){
 
   match.arg(method,c("Tukey","Liu","Oja","Spatial","CWmed"))
   if(is.null(dim(x))){ m=median(x)
@@ -28,6 +19,9 @@ med.default=function(x,method="Tukey",approx=FALSE,eps=1e-8,maxit=200,mustdith=F
   p=length(x[1,])
   n=length(x[,1])
   if(p==1){ return(median(x)) }
+  if(is.null(nstp)) nstp=floor(5*n^0.3*p)
+  if(is.null(ntry)) ntry=10*(p+1)
+  if(is.null(nalt)) nalt=4*(p+1)
   
   if(p>n) { warning(message=paste("Is your data ",n," points in ",p," dimensions.\nIf not, you should transpose your data matrix.\n")) }
   if(p!=2 & method=="Liu"){ stop("Liu's median can be calculated on bivaraite data sets only") }

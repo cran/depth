@@ -44,7 +44,7 @@ c        Jean-Francois Plante ete 1999
        do 5 i=1,n
               u=x(i)
               v=y(i)
-              call depth(u,v,n,x,y,alpha,f,sdep,hdep)
+              call fdepth(u,v,n,x,y,alpha,f,sdep,hdep)
               sdp(i)=sdep
               dpth(i)=int(sdep*(K(N,3)+0.0)+.5)
 5      continue
@@ -93,7 +93,7 @@ c        Jean-Francois Plante ete 1999
 
       do 10 i=1,t+1
           do 5 j=1,t+1
-             call depth(xx(i),yy(j),n,x,y,alpha,f,sdep,hdep)
+             call fdepth(xx(i),yy(j),n,x,y,alpha,f,sdep,hdep)
              if (liu.ne.0) then
                  z(i,j)=sdep
              else
@@ -106,7 +106,7 @@ c        Jean-Francois Plante ete 1999
 
 c---------------------------------------------------------------------------
 
-        SUBROUTINE DEPTH(U,V,N,X,Y,ALPHA,F,SDEP,HDEP)
+        SUBROUTINE fdepth(U,V,N,X,Y,ALPHA,F,SDEP,HDEP)
 
 c        Calcule la profondeur de Liu et de Tukey du point (u,v) 
 c        dans l'echantillon (x,y). Pour plus d'informations, consultez

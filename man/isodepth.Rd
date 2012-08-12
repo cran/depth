@@ -1,8 +1,5 @@
 \name{isodepth}
 \alias{isodepth}
-\alias{isodepth.default}
-\alias{isodepth.data.frame}
-\alias{isodepth.list}
 \title{Contour plots for depth functions}
 \description{
 Draws a contour plot of Tukey's depth function.

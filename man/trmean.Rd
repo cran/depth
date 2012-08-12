@@ -1,8 +1,5 @@
 \name{trmean}
 \alias{trmean}
-\alias{trmean.default}
-\alias{trmean.data.frame}
-\alias{trmean.list}
 \title{Classical-like depth-based trimmed mean}
 \description{
 Computes a sample trimmed mean based on the Tukey depth, the Liu depth or the Oja depth.

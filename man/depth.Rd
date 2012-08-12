@@ -1,9 +1,5 @@
 \name{depth}
 \alias{depth}
-\alias{depth.default}
-\alias{depth.data.frame}
-\alias{depth.matrix}
-\alias{depth.list}
 \concept{Tukey depth}
 \concept{halfspace depth}
 \concept{Simplicial depth}
@@ -52,7 +48,7 @@ Zuo, Y. amd Serfling, R. (2000), General Notions of Statistical Depth Functions,
 \seealso{\code{\link{perspdepth}} and \code{\link{isodepth}} for depth graphics.}
 \examples{## calculation of Tukey depth
 data(starsCYG, package = "robustbase")
-depth(mean(starsCYG), starsCYG)
+depth(apply(starsCYG,2,mean), starsCYG)
 
 ## Tukey depth applied to a large bivariate data set.
 set.seed(356)

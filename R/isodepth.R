@@ -1,26 +1,16 @@
 isodepth=function(x,dpth=NULL,output=FALSE,twodim=TRUE,mustdith=FALSE,maxdith=50,dithfactor=10,trace.errors=TRUE,eps=1e-8,factor=.8,xlab="X",ylab="Y",zlab="Tukey's depth",colcontours=NULL,...){
-  UseMethod("isodepth")
-}
 
-isodepth.data.frame=function(x,dpth=NULL,output=FALSE,twodim=TRUE,mustdith=FALSE,maxdith=50,dithfactor=10,trace.errors=TRUE,eps=1e-8,factor=.8,xlab="X",ylab="Y",zlab="Tukey's depth",colcontours=NULL,...){
-  x=as.matrix(x)
-  NextMethod("isodepth")
-}
-
-
-isodepth.list=function(x,dpth=NULL,output=FALSE,twodim=TRUE,mustdith=FALSE,maxdith=50,dithfactor=10,trace.errors=TRUE,eps=1e-8,factor=.8,xlab="X",ylab="Y",zlab="Tukey's depth",colcontours=NULL,...){
-  m=length(x)
-  n=length(x[[1]])
-  y=matrix(0,n,m)
-  for(i in 1:m){
-    y[,i]=x[[i]]
-    if(length(x[[i]])!=n){ stop("When using a list, each element must be a vector of the same length.") }
+  if(is.data.frame(x)) x=as.matrix(x)
+  if(is.list(x)) {
+    m=length(x)
+    n=length(x[[1]])
+    y=matrix(0,n,m)
+    for(i in 1:m){
+      y[,i]=x[[i]]
+      if(length(x[[i]])!=n){ stop("When using a list, each element must be a vector of the same length.") }
+    }
+    x=y
   }
-  x=y
-  NextMethod("perspdepth")
-}
-
-isodepth.default=function(x,dpth=NULL,output=FALSE,twodim=TRUE,mustdith=FALSE,maxdith=50,dithfactor=10,trace.errors=TRUE,eps=1e-8,factor=.8,xlab="X",ylab="Y",zlab="Tukey's depth",colcontours=NULL,...){
 
   p=length(x[1,])
   n=length(x[,1])

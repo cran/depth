@@ -1,26 +1,17 @@
 trmean=function(x,alpha,W=function(dep,alpha){return(1)},method="Tukey",ndir=1000,approx=FALSE,eps=1e-8,...){
-  UseMethod("trmean")
-}
-
-trmean.data.frame=function(x,alpha,W=function(dep,alpha){return(1)},method="Tukey",ndir=1000,approx=FALSE,eps=1e-8,...){
-  x=as.matrix(x)
-  NextMethod("trmean",x)
-}
-
-trmean.list=function(x,alpha,W=function(dep,alpha){return(1)},method="Tukey",ndir=1000,approx=FALSE,eps=1e-8,...){
-  m=length(x)
-  n=length(x[[1]])
-  y=matrix(0,n,m)
-  for(i in 1:m){
-    y[,i]=x[[i]]
-    if(length(x[[i]])!=n){ stop("When using a list, each element must be a vector of the same length.") }
-  }
-  x=y
-  NextMethod("trmean",x)
-}
-
-trmean.default=function(x,alpha,W=function(dep,alpha){return(1)},method="Tukey",ndir=1000,approx=FALSE,eps=1e-8,...){
   
+	if(is.data.frame(x)) x=as.matrix(x)
+	if(is.list(x)) {
+		m=length(x)
+		n=length(x[[1]])
+		y=matrix(0,n,m)
+		for(i in 1:m){
+			y[,i]=x[[i]]
+			if(length(x[[i]])!=n){ stop("When using a list, each element must be a vector of the same length.") }
+		}
+		x=y
+	}
+
  	match.arg(method,c("Tukey","Liu","Oja"))
  	W=match.fun(W)
 	p=length(x[1,])

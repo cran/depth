@@ -1,8 +1,5 @@
 \name{ctrmean}
 \alias{ctrmean}
-\alias{ctrmean.default}
-\alias{ctrmean.data.frame}
-\alias{ctrmean.list}
 \title{Centroid trimmed mean}
 \description{
 Computes the centroid of a Tukey depth-based trimmed region.

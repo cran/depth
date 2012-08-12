@@ -1,26 +1,17 @@
 
 ctrmean=function(x,alpha,eps=1e-8,mustdith=FALSE,maxdith=50,dithfactor=10,factor=.8){
-  UseMethod("ctrmean")
-}
 
-ctrmean.data.frame=function(x,alpha,eps=1e-8,mustdith=FALSE,maxdith=50,dithfactor=10,factor=.8){
-  x=as.matrix(x)
-  NextMethod("ctrmean",x)
-}
-
-ctrmean.list=function(x,alpha,eps=1e-8,mustdith=FALSE,maxdith=50,dithfactor=10,factor=.8){
-  m=length(x)
-  n=length(x[[1]])
-  y=matrix(0,n,m)
-  for(i in 1:m){
-    y[,i]=x[[i]]
-    if(length(x[[i]])!=n){ stop("When using a list, each element must be a vector of the same length.") }
+  if(is.data.frame(x)) x=as.matrix(x)
+  if(is.list(x)) {
+    m=length(x)
+    n=length(x[[1]])
+    y=matrix(0,n,m)
+    for(i in 1:m){
+      y[,i]=x[[i]]
+      if(length(x[[i]])!=n){ stop("When using a list, each element must be a vector of the same length.") }
+    }
+    x=y
   }
-  x=y
-  NextMethod("ctrmean",x)
-}
-
-ctrmean.default=function(x,alpha,eps=1e-8,mustdith=FALSE,maxdith=50,dithfactor=10,factor=.8){
 
 	p=length(x[1,])
 	n=length(x[,1])

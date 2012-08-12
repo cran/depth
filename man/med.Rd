@@ -1,8 +1,5 @@
 \name{med}
 \alias{med}
-\alias{med.default}
-\alias{med.data.frame}
-\alias{med.list}
 \title{Multivariate median}
 \description{
 Computes the median of a multivariate data set.
@@ -10,7 +7,7 @@ Computes the median of a multivariate data set.
 \usage{
 med(x, method = "Tukey", approx = FALSE, eps = 1e-8, maxit = 200,
    mustdith = FALSE, maxdith = 50, dithfactor = 10, factor = 0.8, 
-   nstp = floor(5*n^0.3*p), ntry = 10*(p+1), nalt = 4*(p+1), 
+   nstp = NULL, ntry = NULL, nalt = NULL, 
    ndir = 1000)
 }
 \arguments{
@@ -23,9 +20,10 @@ med(x, method = "Tukey", approx = FALSE, eps = 1e-8, maxit = 200,
   \item{maxdith}{Integer. Maximum number of dithering steps.}
   \item{dithfactor}{Scaling factor used for horizontal and vertical dithering.}
  \item{factor}{Proportion (0 to 1) of outermost contours computed according to algorithm HALFMED of Rousseeuw and Ruts (1998); remaining contours derived from an algorithm in Rousseeuw \emph{et al.} (1999).}
-  \item{nstp}{Positive integer. Maximum number of steps in the iteration process leading to an approximate value of the Tukey median. Default value is taken to be the largest integer not greater than \eqn{5 n^{0.3}p}, where \eqn{n} is the number of observations and \eqn{p} the dimension.}
-  \item{ntry}{Positive integer. Maximum number of steps without an increase of the Tukey depth in the iteration process leading to an approximate value of the Tukey median. Default value is taken to be \eqn{10(p+1)}, where \eqn{p} is the dimension.}
-  \item{nalt}{Positive integer. Maximum number of consecutive steps without an increase of the Tukey depth at any time in the iteration process leading to an approximate value of the Tukey median. Default value is taken to be \eqn{4(p+1)}, where \eqn{p} is the dimension.}
+  \item{nstp}{Positive integer. Maximum number of steps in the iteration process
+  leading to an approximate value of the Tukey median. If \code{NULL}, the default value is taken to be the largest integer not greater than \eqn{5 n^{0.3}p}, where \eqn{n} is the number of observations and \eqn{p} the dimension.}
+  \item{ntry}{Positive integer. Maximum number of steps without an increase of the Tukey depth in the iteration process leading to an approximate value of the Tukey median. If \code{NULL}, the default value is taken to be \eqn{10(p+1)}, where \eqn{p} is the dimension.}
+  \item{nalt}{Positive integer. Maximum number of consecutive steps without an increase of the Tukey depth at any time in the iteration process leading to an approximate value of the Tukey median. If \code{NULL}, the default value is taken to be \eqn{4(p+1)}, where \eqn{p} is the dimension.}
   \item{ndir}{Positive integer. Number of random directions used in the iteration process leading to an approximate value of the Tukey median.}
 }
 \details{\code{method} "Tukey" computes the Tukey median. Calculation is exact

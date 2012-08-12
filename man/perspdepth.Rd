@@ -1,8 +1,5 @@
 \name{perspdepth}
 \alias{perspdepth}
-\alias{perspdepth.default}
-\alias{perspdepth.data.frame}
-\alias{perspdepth.list}
 \title{ Perspective plots for depth functions }
 \description{
 Draws a perspective plot of the surface of a depth function over the x-y plane.
@@ -39,7 +36,6 @@ perspdepth(x, method = "Tukey", output = FALSE, tt = 50,
 ## 2 perspective plots
 data(geyser, package = "MASS")
 perspdepth(geyser, col = "magenta")
-open3d()
 set.seed(159); library(MASS)
 mu1 <- c(0,0); mu2 <- c(6,0); sigma <- matrix(c(1,0,0,1), nc = 2)
 mixbivnorm <- rbind(mvrnorm(80, mu1, sigma),mvrnorm(20, mu2, sigma))

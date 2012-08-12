@@ -1,29 +1,17 @@
 depth=function(u,x,method="Tukey",approx=FALSE,eps=1e-8,ndir=1000){
-  UseMethod("depth",x)
-}
 
-depth.matrix=function(u,x,method="Tukey",approx=FALSE,eps=1e-8,ndir=1000){
-  NextMethod("depth",x)
-}
-
-depth.data.frame=function(u,x,method="Tukey",approx=FALSE,eps=1e-8,ndir=1000){
-  x=as.matrix(x)
-  NextMethod("depth",x)
-}
-
-depth.list=function(u,x,method="Tukey",approx=FALSE,eps=1e-8,ndir=1000){
-  m=length(x)
-  n=length(x[[1]])
-  y=matrix(0,n,m)
-  for(i in 1:m){
-    y[,i]=x[[i]]
-    if(length(x[[i]])!=n){ stop("When using a list, each element must be a vector of the same length.") }
+  if(is.data.frame(x)) x=as.matrix(x)
+  if(is.list(x)) {
+    m=length(x)
+    n=length(x[[1]])
+    y=matrix(0,n,m)
+    for(i in 1:m){
+      y[,i]=x[[i]]
+      if(length(x[[i]])!=n){ stop("When using a list, each element must be a vector of the same length.") }
+    }
+    x=y
   }
-  x=y
-  NextMethod("depth",x)
-}
 
-depth.default=function(u,x,method="Tukey",approx=FALSE,eps=1e-8,ndir=1000){
 
 # Suppose n data points in p dimensions. 
 # Calculates depth of u in sample x.
@@ -60,7 +48,7 @@ depth.default=function(u,x,method="Tukey",approx=FALSE,eps=1e-8,ndir=1000){
   if(method=="Tukey"){
   if(p==2){
 
-    ans=.Fortran("depth",
+    ans=.Fortran("fdepth",
       as.numeric(u[1]),
       as.numeric(u[2]),
       as.integer(n),
@@ -172,7 +160,7 @@ depth.default=function(u,x,method="Tukey",approx=FALSE,eps=1e-8,ndir=1000){
 # Calculation of Liu's median
   
   if(method=="Liu"){
-    ans=.Fortran("depth",
+    ans=.Fortran("fdepth",
       as.numeric(u[1]),
       as.numeric(u[2]),
       as.integer(n),

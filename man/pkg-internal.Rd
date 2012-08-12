@@ -1,0 +1,30 @@
+\name{pkg-internal}
+\alias{airtrispher}
+\alias{cmsphertri}
+\alias{cmsphertri2}
+\alias{dirmoytronq}
+\alias{sdirmoytronq}
+\alias{disp}
+\alias{espacetronque}
+\alias{intersect}
+\alias{medianecirc}
+\alias{pointshemi}
+\alias{prodvect2}
+\alias{schema.polyspher}
+\alias{sphericaldevide}
+\alias{spherpolycentroide}
+\alias{tracearc}
+\alias{tracepolyspher}
+\alias{traceregion}
+\alias{tukdepthc2}
+\alias{tukdepthc3}
+\alias{tukdepths2}
+\alias{tukdepthsdemi}
+\alias{tukdepthsdemiineg}
+\alias{tukmedc}
+\alias{tukmedtronq}
+\alias{verifdemic}
+\alias{verifextpoly}
+\alias{whichdemi}
+\title{Internal functions of the depth package}
+\description{These functions are not meant to be used at the user-level.}

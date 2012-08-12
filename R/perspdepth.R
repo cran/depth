@@ -1,30 +1,22 @@
 perspdepth=function(x,method="Tukey",output=FALSE,tt=50,xlab="X",ylab="Y",zlab=NULL,col=NULL,...){
-  UseMethod("perspdepth")
-}
 
-perspdepth.data.frame=function(x,method="Tukey",output=FALSE,tt=50,xlab="X",ylab="Y",zlab=NULL,col=NULL,...){
-  x=as.matrix(x)
-  NextMethod("perspdepth")
-}
-
-perspdepth.list=function(x,method="Tukey",output=FALSE,tt=50,xlab="X",ylab="Y",zlab=NULL,col=NULL,...){
-  m=length(x)
-  n=length(x[[1]])
-  y=matrix(0,n,m)
-  for(i in 1:m){
-    y[,i]=x[[i]]
-    if(length(x[[i]])!=n){ stop("When using a list, each element must be a vector of the same length.") }
+  if(is.data.frame(x)) x=as.matrix(x)
+  if(is.list(x)) {
+    m=length(x)
+    n=length(x[[1]])
+    y=matrix(0,n,m)
+    for(i in 1:m){
+      y[,i]=x[[i]]
+      if(length(x[[i]])!=n){ stop("When using a list, each element must be a vector of the same length.") }
+    }
+    x=y
   }
-  x=y
-  NextMethod("perspdepth")
-}
-
-perspdepth.default=function(x,method="Tukey",output=FALSE,tt=50,xlab="X",ylab="Y",zlab=NULL,col=NULL,...){
 
 # Suppose n data points in p dimensions. 
 # Plots depth of sample x.
 # x= matrix n by p
 # method= which depth to use
+
 
   require(rgl)
   match.arg(method,c("Tukey","Liu","Oja"))
