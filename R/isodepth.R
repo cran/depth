@@ -143,7 +143,6 @@ isodepth=function(x,dpth=NULL,output=FALSE,twodim=TRUE,mustdith=FALSE,maxdith=50
     
     if(twodim==FALSE & output==FALSE){
  
- 	require(rgl)
 	xx=NULL
 	yy=NULL
 	Dpth=NULL

@@ -14,18 +14,18 @@ smed=function(P,sort=FALSE,depths=NULL,alpha=NULL,method="Tukey",tracecontour=FA
 # Functions used by smed
 
 tukmedc=function(P,sort=FALSE,profondeurs=NULL,alpha=NULL)
-#Cette fonction calcule la alpha-médiane de Tukey pour un échantillon 
-#en position générale sur le cercle.
-#Entrée obligatoire:	
-#-P: Un échantillon de points sur le cercle en coordonnées polaires. 
-#Entrées optionnelles:	
-#-sort=TRUE si les points de l'échantillon ont été ordonnées.
+#Cette fonction calcule la alpha-mediane de Tukey pour un echantillon 
+#en position generale sur le cercle.
+#Entree obligatoire:	
+#-P: Un echantillon de points sur le cercle en coordonnees polaires. 
+#Entrees optionnelles:	
+#-sort=TRUE si les points de l'echantillon ont ete ordonnees.
 #-profondeurs est un vecteur contenant la profondeur de Tukey de chacun 
-#des points de l'échantillon.
-#-le paramètre alpha de la alpha-médiane de Tukey. Si alpha=NULL, la
-#médiane calculée sera celle de profondeur maximale.
+#des points de l'echantillon.
+#-le parametre alpha de la alpha-mediane de Tukey. Si alpha=NULL, la
+#mediane calculee sera celle de profondeur maximale.
 #Sorties:
-#-Un nombre entre 0 et 2*pi donnant la alpha-médiane de Tukey.
+#-Un nombre entre 0 et 2*pi donnant la alpha-mediane de Tukey.
 {
   n=length(P)
   if(n==2)
@@ -106,20 +106,20 @@ tukmedc=function(P,sort=FALSE,profondeurs=NULL,alpha=NULL)
 
 
 medianecirc=function(P,tracecontour=TRUE,tracepoints=TRUE,return=TRUE)
-#Cette function calcule la médiane ciculaire (point minimisant la 
-#distance moyenne par arccosinus) d'un échantillon sur le cercle
-#Entrées:
-#-Un échantillon sur le cercle (forme polaire)
-#Entrées optionnelles:
+#Cette function calcule la mediane ciculaire (point minimisant la 
+#distance moyenne par arccosinus) d'un echantillon sur le cercle
+#Entrees:
+#-Un echantillon sur le cercle (forme polaire)
+#Entrees optionnelles:
 #-Si tracecontour=F, la fonction ne trace pas le graphe de la fonction 
 #de dispersion
-#-Si tracepoints=F, la fonction ne trace pas l'échantillon sur le 
+#-Si tracepoints=F, la fonction ne trace pas l'echantillon sur le 
 #cercle. 
-#-Si return=F, la fonction ne retourne pas la médiane circulaire. 
+#-Si return=F, la fonction ne retourne pas la mediane circulaire. 
 #Sorties:
-#-Une liste de deux éléments, le premier est la médiane circulaire,
-#-le deuxième est la valeur de la fonction de dispersion pour chaque point 
-#de l'échantillon.
+#-Une liste de deux elements, le premier est la mediane circulaire,
+#-le deuxieme est la valeur de la fonction de dispersion pour chaque point 
+#de l'echantillon.
 {
   n=length(P)
   disppoints=NA
@@ -194,10 +194,10 @@ medianecirc=function(P,tracecontour=TRUE,tracepoints=TRUE,return=TRUE)
 }
 
 disp=function(P,alpha)
-#Cette fonction calcule la dispersion de l'échantillon P autour de 
+#Cette fonction calcule la dispersion de l'echantillon P autour de 
 #l'angle alpha. 
-#Entrées:	
-#-P: un échantillon de points sur le cercle en coordonnées polaires.
+#Entrees:	
+#-P: un echantillon de points sur le cercle en coordonnees polaires.
 #-alpha: l'angle autour duquel on veut mesurer la dispersion.
 #Sortie:
 #La valeur de la dispersion.

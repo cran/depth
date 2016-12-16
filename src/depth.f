@@ -14,7 +14,7 @@ c        Jean-Francois Plante ete 1999
 
 
        integer p,n,i,m
-       real*8 x(n,p),y(n)
+       double precision x(n,p),y(n)
 
        do 10 i=1,n
            y(i)=x(i,m)
@@ -37,9 +37,9 @@ c        Jean-Francois Plante ete 1999
 
        integer n,i,k,cont,q(n)
        integer f(n),dpth(n),maxdpth
-       real*8 x(n),y(n),med(2)
-       real*8 sdep,hdep,sdp(n)
-       real*8 alpha(n),u,v
+       double precision x(n),y(n),med(2)
+       double precision sdep,hdep,sdp(n)
+       double precision alpha(n),u,v
 
        do 5 i=1,n
               u=x(i)
@@ -88,8 +88,8 @@ c        liu : 0 => profondeur de Tukey 1=> prof. de Liu utilisee
 c        Jean-Francois Plante ete 1999
 
       integer n,t,i,j,f(n),liu
-      real*8 x(n),y(n),z(t+1,t+1),xx(t+1),yy(t+1)
-      real*8 sdep,hdep,alpha(n)
+      double precision x(n),y(n),z(t+1,t+1),xx(t+1),yy(t+1)
+      double precision sdep,hdep,alpha(n)
 
       do 10 i=1,t+1
           do 5 j=1,t+1
@@ -114,8 +114,8 @@ c        l'article disponible au http://win-www.uia.ac.be/u/statis/ :
 c        Rousseuw, P.J., and Ruts, I. (1996), AS 307 : Bivariate location
 c        depth, Applied Statistics (JRRSS-C), vol.45, 516-526
 
-      REAL*8 U,V,X(n),Y(n),ALPHA(n)
-      REAL*8 P,P2,EPS,D,XU,YU,ANGLE,ALPHK,BETAK,SDEP,HDEP
+      double precision U,V,X(n),Y(n),ALPHA(n)
+      double precision P,P2,EPS,D,XU,YU,ANGLE,ALPHK,BETAK,SDEP,HDEP
       INTEGER F(N),GI
       integer n,nums,numh,nt,i,nn,nu,ja,jb,nn2,nbad,nf,j,ki,k
       NUMS=0
@@ -271,7 +271,7 @@ c------------------------------------------------------------------
       SUBROUTINE SORT(B,N)
 C  Sorts an array B (of length N<=1000) in O(NlogN) time.
 
-      REAL*8 B(N),x(n)
+      double precision B(N),x(n)
       integer q(n),i,n
       
       call indexx(n,b,q)
@@ -291,7 +291,7 @@ C  Sorts a integer array B of length N and permutes two real arrays
 C  I1 and I2 and one real array R in the same way. (descending order)
 C
       INTEGER N,b(n),q(n),x(n),i
-      REAL*8 I1(N),I2(n),II1(n),II2(n),bb(n)
+      double precision I1(N),I2(n),II1(n),II2(n),bb(n)
 
       do 5 i=1,n
         bb(i)=dble(b(i))
@@ -324,7 +324,7 @@ c------------------------------------------------------------------
 c        voir depth3
 
       integer n,err
-      real*8 X(N),Y(N),Z(N),U,V,W,XN(N),EPS
+      double precision X(N),Y(N),Z(N),U,V,W,XN(N),EPS
 
 
       CALL STAND1(N,X,U,XN,EPS,1,err)
@@ -341,8 +341,8 @@ c------------------------------------------------------------------
 c        voir depth3
 
       integer i,j,n,err,jn
-      real*8 X(N),U,XN(N),EPS,findq
-      real*8 QLOC,QSCA,AVE,VAR
+      double precision X(N),U,XN(N),EPS,findq
+      double precision QLOC,QSCA,AVE,VAR
       
 
       jn=0
@@ -424,8 +424,8 @@ c        and Computing, vol.8, 193-203.
 
 
       integer n,ndim,ndep,i,j,ntnul,ntpos,ntneg,nh
-      real*8 U,V,W,X(N),Y(N),Z(N),ALPHA(N),XN(N),YN(N)
-      real*8 A(2,3),B(3,2),EPS,DP
+      double precision U,V,W,X(N),Y(N),Z(N),ALPHA(N),XN(N),YN(N)
+      double precision A(2,3),B(3,2),EPS,DP
       INTEGER F(N)
 
 C
@@ -544,8 +544,8 @@ c------------------------------------------------------------------
 
       integer n,ntpos,ntneg,ntnul,ndim,numh,nt,nd,i,nn,nu,ja,jb,nn2,nf
       integer j,ki
-      real*8 U,V,X(N),Y(N),ALPHA(N)
-      real*8 P,P2,EPS,D,XU,YU,ANGLE,ALPHK,BETAK
+      double precision U,V,X(N),Y(N),ALPHA(N)
+      double precision P,P2,EPS,D,XU,YU,ANGLE,ALPHK,BETAK
       INTEGER F(N),GI,NH
       NUMH=0
       NH=0
@@ -696,8 +696,8 @@ c ====================================================================
       SUBROUTINE STANDPD(MAXN,MAXP,N,NP,X,T,EPS,err,NDEP)
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       integer maxn,maxp,n,np,ndep,i,j,jn,err(np)
-      real*8 X(MAXN,MAXP),T(NP),XN(N),EPS
-      real*8 QLOC,QSCA,AVE,VAR
+      double precision X(MAXN,MAXP),T(NP),XN(N),EPS
+      double precision QLOC,QSCA,AVE,VAR
 
       JN=0
       DO 10 J=1,NP
@@ -779,8 +779,8 @@ c        and Computing, vol.8, 193-203.
       integer n,p,np,nnp,ndir,err,ndep,nsin,j,numh,nt,l
       integer err2(ndir),nnp1,maxn,maxp
 
-      real*8 X(maxN,maxP),T(maxP),R(maxP),EPS,AVE(maxP)
-      real*8 EVECS(maxP,maxP),EVALS(maxP),COV(maxP,maxP)
+      double precision X(maxN,maxP),T(maxP),R(maxP),EPS,AVE(maxP)
+      double precision EVECS(maxP,maxP),EVALS(maxP),COV(maxP,maxP)
       INTEGER JSAMP(maxP),ierr
 C
 C  Initialize the number of singular samples.
@@ -854,9 +854,9 @@ c--------------------------------------------------------------------
 
       integer n,np,ndir,ndep,nsin,err(ndir),p,nrun,nran
       integer i,nsamp,j
-      real*8 X(N,P),T(P),R(P)
-      real*8 K,KT,EPS,RAN
-      real*8 EVECS(P,P),EVALS(P),COV(P,P),AVE(P)
+      double precision X(N,P),T(P),R(P)
+      double precision K,KT,EPS,RAN
+      double precision EVECS(P,P),EVALS(P),COV(P,P),AVE(P)
       INTEGER JSAMP(P),ierr,l,nt,numh
 C
 C  Initialize halfspace depth and random seed.
@@ -870,12 +870,12 @@ C
 C  Draw a random sample of size np.
 C     
          CALL RANDM(NRUN,RAN)
-         I=N*RAN+1.
+         I=int(RAN*N+1.d0)
          IF(I.GT.N)I=N
          JSAMP(1)=I
          NSAMP=1
  20      CALL RANDM(NRUN,RAN)
-         L=N*RAN+1.
+         L=int(N*RAN+1.d0)
          IF(L.GT.N)L=N
          DO 30 J=1,NSAMP
             IF(L.EQ.JSAMP(J)) GOTO 20
@@ -980,8 +980,8 @@ c--------------------------------------------------------------------
 
       SUBROUTINE REDUCE(N,NNP,NNP1,MAXN,MAXP,X,T,R,EVECS,W,IERR)
    
-      real*8 X(MAXN,MAXP),T(NNP1),R(NNP1)
-      real*8 EVECS(NNP1,NNP1)
+      double precision X(MAXN,MAXP),T(NNP1),R(NNP1)
+      double precision EVECS(NNP1,NNP1)
       INTEGER W(NNP),n,nnp,nnp1,maxn,maxp,ierr,i,j,io
 
       IERR=0
@@ -1026,7 +1026,7 @@ CC   TO BE MACHINE INDEPENDENT. IT SHOULD RUN ON MOST COMPUTERS
 CC   BECAUSE THE LARGEST INTEGER USED IS LESS THAN 2**30 . THE PERIOD 
 CC   IS 2**16=65536, WHICH IS GOOD ENOUGH FOR OUR PURPOSES. 
       DOUBLE PRECISION RAN,RY
-      INTEGER*4 NRUN,K
+      INTEGER NRUN,K
       NRUN=NRUN*5761+999
       K=NRUN/65536
       NRUN=NRUN-K*65536 
@@ -1041,9 +1041,9 @@ c--------------------------------------------------------------------
       function findq(aw,ncas,k)
 cc  Finds the k-th order statistic of the array aw of length ncas.
 
-      real*8 findq
-      real*8 aw(ncas)
-      real*8 ax,wa
+      double precision findq
+      double precision aw(ncas)
+      double precision ax,wa
       integer ncas,k,l,lr,jnc,j
 
       l=1
@@ -1135,8 +1135,9 @@ C     |*** COMPUTE MULTIPLIERS ***|
 C     -----------------------------
       V(L,L) = -1.
       S = 1./S
-      DO 40 I = 1,N
-40         V(I,L) = -S*V(I,L)
+      DO I = 1,N
+           V(I,L) = -S*V(I,L)
+      end do
       J = L
 50    J = J + 1
       IF ( J .GT. N ) J = 1
@@ -1149,21 +1150,24 @@ C     ------------------------------
 C     |*** ELIMINATE BY COLUMNS ***|
 C     ------------------------------
       IF ( K .EQ. 0 ) GOTO 70
-      DO 60 I = 1,K
-60         V(I,J) = V(I,J) + T*V(I,L)
+      DO I = 1,K
+           V(I,J) = V(I,J) + T*V(I,L)
+      end do
 70    V(L,J) = S*T
       IF ( M .GT. N ) GOTO 50
-      DO 80 I = M,N
-80         V(I,J) = V(I,J) + T*V(I,L)
+      DO I = M,N
+           V(I,J) = V(I,J) + T*V(I,L)
+      end do
       GOTO 50
 C     -----------------------
 C     |*** PIVOT COLUMNS ***|
 C     -----------------------
 90    L = W(K)
-      DO 100 I = 1,N
+      DO I = 1,N
            T = V(I,L)
            V(I,L) = V(I,K)
-100        V(I,K) = T
+          V(I,K) = T
+      end do
       K = K - 1
       IF ( K .GT. 0 ) GOTO 90
       RETURN
@@ -1185,7 +1189,7 @@ c--------------------------------------------------------------------
 * ======================================================================
 c
       integer n,nm,ierr
-      real*8 a(nm,n),w(n),z(nm,n),fv1(n)
+      double precision a(nm,n),w(n),z(nm,n),fv1(n)
 
 c
 c     this subroutine calls the recommended sequence of
@@ -1231,12 +1235,12 @@ c
    50 return
       end
 c --------------------------------------------------------------------
-      real*8 function pythag(a,b)
-      real*8 a,b
+      double precision function pythag(a,b)
+      double precision a,b
 c
 c     finds dsqrt(a**2+b**2) without overflow or destructive underflow
 c
-      real*8 p,r,s,t,u
+      double precision p,r,s,t,u
       p = dmax1(dabs(a),dabs(b))
       if (p .eq. 0.0d0) go to 20
       r = (dmin1(dabs(a),dabs(b))/p)**2
@@ -1255,8 +1259,8 @@ c -------------------------------------------------------------------
       subroutine tql2(nm,n,d,e,z,ierr)
 c
       integer i,j,k,l,m,n,ii,l1,l2,nm,mml,ierr
-      real*8 d(n),e(n),z(nm,n)
-      real*8 c,c2,c3,dl1,el1,f,g,h,p,r,s,s2,tst1,tst2,pythag
+      double precision d(n),e(n),z(nm,n)
+      double precision c,c2,c3,dl1,el1,f,g,h,p,r,s,s2,tst1,tst2,pythag
 c
 c     this subroutine is a translation of the algol procedure tql2,
 c     num. math. 11, 293-306(1968) by bowdler, martin, reinsch, and
@@ -1317,8 +1321,9 @@ c
       ierr = 0
       if (n .eq. 1) go to 1001
 c
-      do 100 i = 2, n
-  100 e(i-1) = e(i)
+      do i = 2, n
+        e(i-1) = e(i)
+      end do
 c
       f = 0.0d0
       tst1 = 0.0d0
@@ -1352,8 +1357,8 @@ c     .......... form shift ..........
          if (l2 .gt. n) go to 145
 c
          do 140 i = l2, n
-  140    d(i) = d(i) - h
-c
+           d(i) = d(i) - h
+  140    continue
   145    f = f + h
 c     .......... ql transformation ..........
          p = d(m)
@@ -1427,8 +1432,8 @@ c ---------------------------------------------------------------------
       subroutine tred2(nm,n,a,d,e,z)
 c
       integer i,j,k,l,n,ii,nm,jp1
-      real*8 a(nm,n),d(n),e(n),z(nm,n)
-      real*8 f,g,h,hh,scale
+      double precision a(nm,n),d(n),e(n),z(nm,n)
+      double precision f,g,h,hh,scale
 c
 c     this subroutine is a translation of the algol procedure tred2,
 c     num. math. 11, 181-195(1968) by martin, reinsch, and wilkinson.
@@ -1471,8 +1476,8 @@ c
       do 100 i = 1, n
 c
          do 80 j = i, n
-   80    z(j,i) = a(j,i)
-c
+           z(j,i) = a(j,i)
+   80    continue
          d(i) = a(n,i)
   100 continue
 c
@@ -1486,8 +1491,8 @@ c     .......... for i=n step -1 until 2 do -- ..........
          if (l .lt. 2) go to 130
 c     .......... scale row (algol tol then not needed) ..........
          do 120 k = 1, l
-  120    scale = scale + dabs(d(k))
-c
+           scale = scale + dabs(d(k))
+  120    continue
          if (scale .ne. 0.0d0) go to 140
   130    e(i) = d(l)
 c
@@ -1511,7 +1516,8 @@ c
          d(l) = f - g
 c     .......... form a*u ..........
          do 170 j = 1, l
-  170    e(j) = 0.0d0
+            e(j) = 0.0d0 
+  170    continue
 c
          do 240 j = 1, l
             f = d(j)
@@ -1538,15 +1544,16 @@ c
          hh = f / (h + h)
 c     .......... form q ..........
          do 250 j = 1, l
-  250    e(j) = e(j) - hh * d(j)
+           e(j) = e(j) - hh * d(j)
+  250    continue
 c     .......... form reduced a ..........
          do 280 j = 1, l
             f = d(j)
             g = e(j)
 c
             do 260 k = j, l
-  260       z(k,j) = z(k,j) - f * e(k) - g * d(k)
-c
+              z(k,j) = z(k,j) - f * e(k) - g * d(k)
+  260       continue
             d(j) = z(l,j)
             z(i,j) = 0.0d0
   280    continue
@@ -1563,20 +1570,24 @@ c     .......... accumulation of transformation matrices ..........
          if (h .eq. 0.0d0) go to 380
 c
          do 330 k = 1, l
-  330    d(k) = z(k,i) / h
+           d(k) = z(k,i) / h
+  330    continue
 c
          do 360 j = 1, l
             g = 0.0d0
 c
             do 340 k = 1, l
-  340       g = g + z(k,i) * z(k,j)
+              g = g + z(k,i) * z(k,j)
+  340       continue
 c
-            do 360 k = 1, l
+            do 361 k = 1, l
                z(k,j) = z(k,j) - g * d(k)
+  361    continue
   360    continue
 c
   380    do 400 k = 1, l
-  400    z(k,i) = 0.0d0
+             z(k,i) = 0.0d0
+  400    continue
 c
   500 continue
 c
@@ -1608,8 +1619,8 @@ c        z   : z[i,j] = profondeur de (x(i),y(j))
 c        Jean-Francois Plante ete 1999
 
       integer n,t,i,j
-      real*8 x(n,2),z(t+1,t+1),xx(t+1),yy(t+1)
-      real*8 odep,u(2)
+      double precision x(n,2),z(t+1,t+1),xx(t+1),yy(t+1)
+      double precision odep,u(2)
 
       do 10 i=1,t+1
           u(1)=xx(i)
@@ -1630,7 +1641,7 @@ c l = where about in the data (what was the last line added)
 c sum = sum of areas so far; mat = matrix with k-1 first columns filled
 c x = data set; u = vector with respect to which depth is calculated.
       integer p,n,k,l
-      real*8 x(n,p),u(p),one,sum,mat(p,p),col(p),v(p),det
+      double precision x(n,p),u(p),one,sum,mat(p,p),col(p),v(p),det
       
       one=1.0
     
@@ -1655,8 +1666,8 @@ c----------------------------------------------------------------------
       subroutine ojadepth(x,u,p,n,dpth)
 
       integer n,p,i,j
-      real*8 x(n,p),u(p),dpth,sum,mat(p,p),aire
-      real*8 coef,fac,det,one
+      double precision x(n,p),u(p),dpth,sum,mat(p,p),aire
+      double precision coef,fac,det,one
 
 c        Calcule la profondeur de u dans x selon la definition de Oja.
 c        p   : entier egal au nombre de dimensions
@@ -1709,7 +1720,7 @@ c        Jean-Francois Plante ete 1999
 
 
       integer p,ipvt(p),info
-      real*8 x(p,p),det,d(2),work(p),s1
+      double precision x(p,p),det,d(2),work(p),s1
 
       if(p.eq.2) then
          det=x(1,1)*x(2,2)-x(1,2)*x(2,1)
@@ -1747,7 +1758,7 @@ c        s   : matrice p*p = estimateur = sum((Ti-Tbar)(Ti-Tbar)')
 c        Jean-Francois Plante, ete 1999
 
        integer p,n,i,j,k
-       real*8 t(p,n),s(p,p),tbar(p)
+       double precision t(p,n),s(p,p),tbar(p)
 
 c    Calcul de la moyenne
 
@@ -1787,7 +1798,7 @@ c        s   : matrice p*p = estimateur = sum(Ti*Ti')
 c        Jean-Francois Plante, ete 1999
 
        integer p,n,i,j,k
-       real*8 t(p,n),s(p,p)
+       double precision t(p,n),s(p,p)
 
 
 c,tbar(p),tt(p,p)
@@ -1832,7 +1843,7 @@ c        y   : vecteur de p elements : moyenne des lignes de t
 c        Jean-Francois Plante, ete 1999
 
        integer p,n,i
-       real*8 x(p,n),y(p)
+       double precision x(p,n),y(p)
 
        call sumcol(p,n,x,y)
        do 10 i=1,p
@@ -1850,7 +1861,7 @@ c        x   : matrice p*p, =t*t'
 c        Jean-Francois Plante, ete 1999
 
        integer p,i,j
-       real*8  t(p),x(p,p)
+       double precision  t(p),x(p,p)
 
        do 20 i=1,p
            do 10 j=i,p
@@ -1870,7 +1881,7 @@ c        y   : vecteur de p elements : somme des lignes de t
 c        Jean-Francois Plante, ete 1999
 
        integer p,n,i,j
-       real*8 x(p,n),y(p)
+       double precision x(p,n),y(p)
 
        do 20 i=1,p
            y(i)=0
@@ -1886,7 +1897,7 @@ c        Calcule la combinaison lineaire x=a*u+b*v)
 c        p = longueur des vecteurs 
 
        integer p,i
-       real*8 a,b,u(p),v(p),x(p)
+       double precision a,b,u(p),v(p),x(p)
 
        do 100 i=1,p
               x(i)=a*u(i)+b*v(i)
@@ -1906,7 +1917,7 @@ c        y   : vecteur de p elements = colonne desiree
 c        Jean-Francois Plante ete 1999
 
        integer p,n,i,m
-       real*8 x(n,p),y(n)
+       double precision x(n,p),y(n)
 
        do 10 i=1,p
            y(i)=x(m,i)
@@ -1924,7 +1935,7 @@ c        y   : vecteur de p elements a copier sur la ligne m
 c        Jean-Francois Plante ete 1999
 
        integer p,n,i,m
-       real*8 x(n,p),y(n)
+       double precision x(n,p),y(n)
 
        do 10 i=1,p
            x(m,i)=y(i)
@@ -2371,14 +2382,14 @@ c        Pour plus de renseignements, consultez l'article suivant :
 c        Niinimaa, A, Oja, H., Nyblom, J. (1992), {\it AS 277 : The 
 c        Oja Bivariate Median}, Applied Statistics, vol.41, 611-617.
 
-      REAL*8 X(N), Y(N), XMIN, XMAX, YMIN, YMAX, W
-      real*8 YKL, XKL, SMALLD, SMALL, EPS, XMED, YMED, A
+      double precision X(N), Y(N), XMIN, XMAX, YMIN, YMAX, W
+      double precision YKL, XKL, SMALLD, SMALL, EPS, XMED, YMED, A
 
 C
       INTEGER IWS(N), N,nerr,maxerr
       integer NZ, LL, NZERO, J, KQ, I, NT,L,K, NDIF, IFAULT
 
-      REAL*8 TU, TL, T, WW, DP, D0
+      double precision TU, TL, T, WW, DP, D0
         nerr=0
         maxerr=n/200
         if(maxerr.lt.5) maxerr=5
@@ -2399,7 +2410,7 @@ C
         WW=0.0
         DO 1 K=1,N-1
 
-        DO 1 L=K+1,N
+        DO L=K+1,N
           NT=0
           XKL=X(K)-X(L)
           YKL=Y(K)-Y(L)
@@ -2414,6 +2425,7 @@ C
             IF(W.GT.0.0)NT=NT+1
 4           CONTINUE
           IF((ABS(2*NT-N+2).LE.NDIF).AND.WW.GT.SMALLD) GOTO 3
+        end do
 1       CONTINUE
         IF(WW.LE.SMALLD) THEN
 C
@@ -2443,7 +2455,7 @@ C  Search for the minimum of the Oja objective function on the line
 C  (X(k),Y(k)) to (X(l),Y(l)).
 
         DO 11 I=1,N-1
-        DO 11 J=I+1,N
+        DO 12 J=I+1,N
         WW=(X(K)-X(L))*(Y(J)-Y(I))-(Y(K)-Y(L))*(X(J)-X(I))
         IF(ABS(WW).LT.SMALL)GO TO 11
           T=((X(L)-X(J))*(Y(I)-Y(J))-(Y(L)-Y(J))*(X(I)-X(J)))/WW
@@ -2454,6 +2466,7 @@ C  (X(k),Y(k)) to (X(l),Y(l)).
           IF(DP+D0.LT.0.0)TL=T
           IF(DP+D0.GT.0.0)TU=T
         END IF
+12      continue 
 11      CONTINUE
 
 C  The local minimum on the line (X(k),Y(k))-(X(l),Y(l)) was not
@@ -2513,7 +2526,7 @@ C
 c----------------------------------------------------------------------
       subroutine ojadepth2(z,u,v,n,rep)
 
-      real*8 z(n,2),u,v,w(2),rep
+      double precision z(n,2),u,v,w(2),rep
       integer n
 
       w(1)=u
@@ -2536,7 +2549,8 @@ c        yy : ordonee mediane
 c        eps: precision
 
       integer n,i,gros
-      real*8 wx(n),wy(n),z(n,2),xx,yy,eps,x0,y0,dx,x,y,stp,od,oldod,k
+      double precision wx(n),wy(n),z(n,2),xx,yy,eps,x0,y0,dx,x,y
+      double precision stp,od,oldod,k
 
       do 10 i=1,n
             z(i,1)=wx(i)
@@ -2601,8 +2615,8 @@ C  DP-D0 and DP+D0 are the directional derivatives of the Oja
 C  objective function just before and after the point
 C  (X(l)+t*(X(k)-X(l),Y(l)+t*(Y(k)-Y(l)).
 C
-        REAL*8 X(N), Y(N), DIF, YKL, XKL, SMALL, SMALLD
-        REAL*8 TT, T, WW, DP, D0, SGN
+        double precision X(N), Y(N), DIF, YKL, XKL, SMALL, SMALLD
+        double precision TT, T, WW, DP, D0, SGN
         INTEGER IWS(N), NZERO, II, JJ, N, K, L, KQ
 C
         smalld=1e-6
@@ -2615,7 +2629,7 @@ C
         YKL=Y(K)-Y(L)
 C
         DO 1 II=1,N-1
-        DO 1 JJ=II+1,N
+        DO 2 JJ=II+1,N
         WW=(Y(JJ)-Y(II))*XKL-(X(JJ)-X(II))*YKL
         IF(ABS(WW).LE.SMALL)GO TO 1
         TT=((X(L)-X(JJ))*(Y(II)-Y(JJ))-(Y(L)-Y(JJ))*(X(II)-X(JJ)))/WW
@@ -2629,12 +2643,13 @@ C
             ELSE
             DP=DP+ABS(WW)*SGN(DIF)
           END IF
+  2       continue
   1       CONTINUE
           RETURN
           END
 c -------------------------------------------------------------------
           FUNCTION SGN(X)
-          REAL*8 SGN, X
+          double precision SGN, X
           SGN=1.0
           IF (X.LT.0.0)SGN=-1.0
           RETURN
@@ -2647,8 +2662,8 @@ C  parameter T on the line (X(l)+t*(X(k)-X(l)), Y(l)+t*(Y(k)-Y(l))
 C  inside the rectangle with the vectices (XMIN, YMIN), (XMIN, YMAX),
 C  (XMAX, YMIN) and (XMAX, YMAX).
 C
-      REAL*8 X(N), Y(N), T1, T2, T3, T4, VBIG, SMALL
-      real*8 XMIN, YMIN, XMAX, YMAX, TU, TL
+      double precision X(N), Y(N), T1, T2, T3, T4, VBIG, SMALL
+      double precision XMIN, YMIN, XMAX, YMAX, TU, TL
       INTEGER K, L, N
 C
         vbig=1e38
@@ -2675,7 +2690,7 @@ c -------------------------------------------------------------------
 
       integer INDX(N)
       integer n,j,l,ir,indxt,i
-      real*8 arrin(n),q
+      double precision arrin(n),q
 
       DO 11 J=1,N
         INDX(J)=J
@@ -2741,13 +2756,13 @@ c                                       is positive definite
 c                                     1 if matrix of second derivatives
 c                                       is not positive definite
 c
-      real*8 s,t,c,eps,zero,one,f,r,ang,rr,tmp
-      real*8 x(n,m),med(m),md(m),g(m),q(m,m)
+      double precision s,t,c,eps,zero,one,f,r,ang,rr,tmp
+      double precision x(n,m),med(m),md(m),g(m),q(m,m)
       integer l(n),m,n,ifault,i,nn,j,k,nt,j1,j2,itdone,maxit
 
 c      dimension x(maxn,maxm), med(maxm), md(maxm), g(maxm),
 c     *          q(maxm,maxm), l(maxn)
-      real*8 norm
+      double precision norm
 c
       data zero, one /0.0d0, 1.0d0/
 c
@@ -2756,11 +2771,13 @@ c
       if (m .lt. 1.or. n .lt. 1)
      *    return
       ifault = 0
-      do 1 i = 1, m
-    1 med(i) = zero
+      do i = 1, m
+        med(i) = zero
+      end do
       nn = n
-      do 2 i = 1, n
-    2 l(i) = i
+      do i = 1, n
+        l(i) = i
+      end do
 c
 c        computation of (residual) mean
 c
@@ -2843,8 +2860,9 @@ c
       do 16 i = 1, m
         g(i) = zero
         med(i) = med(i) + md(i)
-        do 16 j = i, m
+        do j = i, m
           q(i, j) = zero
+        end do
    16 continue
       do 19 i = 1, n
         t = zero
@@ -2860,8 +2878,9 @@ c
         f = f + t
         do 18 j = 1, m
           g(j) = g(j) - r * x(i, j)
-          do 18 k = j, m
+          do k = j, m
             q(j, k) = q(k, j) - rr * x(i, j) * x(i, k)
+          end do
    18   continue
    19 continue
       norm = zero
@@ -2944,12 +2963,12 @@ C
 C     The mediancentre, generalising the median, is the point with
 C     minimum total distance from a set of multivariate samples
 C
-      REAL*8  X(N, IP), Y(IP), corner,xx
-      REAL*8  Z(ip), LAMBDA, LEPSI, LEPSR, LEPSD
+      double precision  X(N, IP), Y(IP), corner,xx
+      double precision  Z(ip), LAMBDA, LEPSI, LEPSR, LEPSD
       integer n,ip,it,ifault,icount,lcount,ll,ii,i,j,k,l,lc
-      real*8 diam,s,epsi,u1,u2
+      double precision diam,s,epsi,u1,u2
 C
-      real*8  C(ip), COMP, D, DD, DELTA, EPSR, EPSD, SLAM,
+      double precision  C(ip), COMP, D, DD, DELTA, EPSR, EPSD, SLAM,
      +  ZERO, ONE
 C
       DATA LEPSD /0.0001/, LEPSR / 0.00001/, LEPSI /0.000001/
@@ -2972,11 +2991,13 @@ C     Calculate the diameter
 C
       DIAM = 0.0
       DO 2 I = 2, N
-        DO 2 J = 1, I-1
+        DO J = 1, I-1
           S = 0.0
           DO 1 K = 1, IP
-    1     S = S + (X(I,K) - X(J,K))**2
+          S = S + (X(I,K) - X(J,K))**2
+    1     continue
           DIAM = MAX(S, DIAM)
+        end do
     2 CONTINUE
       DIAM = dSQRT(DIAM)
       EPSR = LEPSR * DIAM
@@ -2988,8 +3009,9 @@ C
       U1 = 1.0 / dble(N)
       DO 4 J = 1, IP
         S = 0.0
-        DO 3 I = 1, N
-    3   S = S + X(I,J)
+        DO I = 1, N
+          S = S + X(I,J)
+        end do
         Y(J) = S * U1
     4 CONTINUE
       IT = ICOUNT
@@ -3005,25 +3027,29 @@ C
 C     Direction cosines and resultant
 C
         CORNER = 0.0
-        DO 7 J = 1, IP
-    7   C(J) = ZERO
+        DO  J = 1, IP
+          C(J) = ZERO
+        end do
         LL = L
         DO 11 I = 1, N
           D = ZERO
-          DO 8 J = 1, IP
-    8     D = D + (X(I,J) - Y(J))**2
+          DO  J = 1, IP
+            D = D + (X(I,J) - Y(J))**2
+          end do
           DD = SQRT(D)
           IF (DD .GT. EPSD) GO TO 9
           CORNER = CORNER + 1.0
           II = I
           GO TO 11
     9     D = ONE / DD
-          DO 10 J = 1, IP
-   10     C(J) = C(J) + (X(I,J) - Y(J)) * D
+          DO J = 1, IP
+            C(J) = C(J) + (X(I,J) - Y(J)) * D
+          end do
    11   CONTINUE
         D = ZERO
-        DO 12 J = 1, IP
-   12   D = D + C(J)**2
+        DO  J = 1, IP
+          D = D + C(J)**2
+        end do
         D = SQRT(D)
         DD = D
 C
@@ -3034,8 +3060,9 @@ C
         D = D - CORNER
    13   IF (D .LE. EPSR) GO TO 24
         DD = ONE / DD
-        DO 14 J = 1, IP
-   14   C(J) = C(J) * DD
+        DO J = 1, IP
+          C(J) = C(J) * DD
+        end do
 C
 C     Step by bisection to give zero component at lambda
 C
@@ -3045,8 +3072,9 @@ C
           COMP = ZERO
           LAMBDA = 0.5 * (U1 + U2)
           SLAM = LAMBDA * LAMBDA
-          DO 15 J = 1, IP
-   15     Z(J) = Y(J) + LAMBDA * C(J)
+          DO J = 1, IP
+            Z(J) = Y(J) + LAMBDA * C(J)
+          end do
           DO 17 I = 1, N
             DELTA = ZERO
             D = SLAM
@@ -3067,14 +3095,16 @@ C
    20   CONTINUE
 C
    21   DO 22 J = 1, IP
-   22   Y(J) = Y(J) + C(J) * LAMBDA
+        Y(J) = Y(J) + C(J) * LAMBDA
+   22   continue
    23 CONTINUE
 C
    24 IT = LL
       RETURN
    25 IT = -LL
       DO 26 J = 1, IP
-   26 Y(J) = X(II,J)
+        Y(J) = X(II,J)
+   26 Continue
       RETURN
       END
 
@@ -3116,19 +3146,19 @@ c        of bivariate point clouds}, Computational Statistics and Data
 c        Analysis, vol.23, 153-168. 
 
       integer n,dpth,maxnum,iv,nceil,dith,err,kk,ndpth
-      INTEGER NCIRQ(N),MCIRQ(N),NRANK(N),F(N),count,sdep
-      integer JLV(N),JRV(N),maxdith,xind,mustdith,maxd
+      INTEGER NCIRQ(N),MCIRQ(N),NRANK(N),F(N),count
+      integer maxdith,xind,mustdith,maxd
       integer dpths(ndpth),ncont(ndpth),t,missing(ndpth)
       INTEGER IND1(n*(n-1)/2),IND2(n*(n-1)/2),nrun
       INTEGER KAND1(MAXNUM),KAND2(MAXNUM),KORNR(MAXNUM,4)
       INTEGER LEFT,KOUNT,NUM,hdep1,khulp,moredith
       INTEGER I,J,L,M,empty,ib,ie,le,tm,notingp
-      REAL*8 X(N),Y(N),WX(N),WY(N),dpf(n),dithfactor
-      REAL*8 ANGLE(n*(n-1)/2),D(n*(n-1)/2),alpha(maxnum),beta(n)
-      REAL*8 PI,PI2,EPS,xcord1,ycord1,xsum,ysum,xcordp,ycordp
-      REAL*8 XCORD,YCORD,E1,E2,F1,F2,G1,G2,ANG1
-      real*8 sum,tukmed(2),wx1(n),wy1(n),rand(2)
-      real*8 xcont(n*(n-1)/2),ycont(n*(n-1)/2),factor
+      double precision X(N),Y(N),WX(N),WY(N),dpf(n),dithfactor
+      double precision ANGLE(n*(n-1)/2),D(n*(n-1)/2),alpha(maxnum)
+      double precision PI,PI2,EPS,xcord1,ycord1,xsum,ysum,xcordp,ycordp
+      double precision XCORD,YCORD,E1,E2,F1,F2,G1,G2,ANG1,beta(n)
+      double precision sum,tukmed(2),wx1(n),wy1(n),rand(2)
+      double precision xcont(n*(n-1)/2),ycont(n*(n-1)/2),factor
  
 
       PI=DACOS(DBLE(-1.0))
@@ -3289,10 +3319,10 @@ C
         else
            khulp=0
         endif
-      CALL ISODEPTH(N,M,X,Y,N,n*(n-1)/2,MAXNUM,NRANK,D,F,BETA,
+      CALL ISODEPTH(N,M,X,Y,MAXNUM,NRANK,D,F,BETA,
      +  KAND1,KAND2,ALPHA,IND1,IND2,NCIRQ,MCIRQ,ANGLE,KORNR,L,
-     +  JRV,JLV,DPF,NUM,ib+nceil(le,2),khulp,EMPTY,moredith,eps
-     +  ,tm,factor)
+     +  DPF,NUM,ib+nceil(le,2),khulp,EMPTY,moredith,eps
+     +  ,factor)
         if (moredith.eq.1) then
             if(mustdith.ne.0) then
                 goto 210
@@ -3309,10 +3339,10 @@ C
         ie=int(real(n)/2)
 180     le=ie-ib
         if (le.eq.0) goto 185
-      CALL ISODEPTH(N,M,X,Y,n,n*(n+1)/2,MAXNUM,NRANK,D,F,BETA,
+      CALL ISODEPTH(N,M,X,Y,MAXNUM,NRANK,D,F,BETA,
      +  KAND1,KAND2,ALPHA,IND1,IND2,NCIRQ,MCIRQ,ANGLE,KORNR,L,
-     +  JRV,JLV,DPF,NUM,ib+nceil(le,2),khulp,EMPTY,moredith,eps
-     +  ,tm,factor)
+     +  DPF,NUM,ib+nceil(le,2),khulp,EMPTY,moredith,eps
+     +  ,factor)
         if (moredith.eq.1)  then
             if(mustdith.ne.0) then
                 goto 210
@@ -3325,10 +3355,10 @@ C
         if (empty.eq.0) ib=ib+nceil(le,2)
         if (le.eq.1) goto 185
         goto 180
-185   CALL ISODEPTH(N,M,X,Y,n,n*(n+1)/2,MAXNUM,NRANK,D,F,BETA,
+185   CALL ISODEPTH(N,M,X,Y,MAXNUM,NRANK,D,F,BETA,
      +  KAND1,KAND2,ALPHA,IND1,IND2,NCIRQ,MCIRQ,ANGLE,KORNR,L,
-     +  JRV,JLV,DPF,NUM,ib,khulp,EMPTY,moredith,eps
-     +  ,tm,factor)
+     +  DPF,NUM,ib,khulp,EMPTY,moredith,eps
+     +  ,factor)
         if (moredith.eq.1)  then
             if(mustdith.ne.0) then
                 goto 210
@@ -3437,7 +3467,7 @@ C
            endif
 
            call tukdepth(xcord,ycord,n,x,y,beta,f,DPF,
-     +  JLV,JRV,HDEP1,sdep,eps)
+     +  HDEP1,eps)
 c           hdep1=int(hd*dble(n)+.5)
 
            if (kk.le.hdep1) then
@@ -3512,7 +3542,7 @@ c
          tukmed(2)=ysum
          endif
          call tukdepth(tukmed(1),tukmed(2),
-     +              n,x,y,beta,f,DPF,JLV,JRV,HDEP1,sdep,eps)
+     +              n,x,y,beta,f,DPF,HDEP1,eps)
 c           hdep1=int(hd*dble(n)+.5)
           
           if ((hdep1.lt.ib).and.(n.gt.150)) then
@@ -3547,10 +3577,10 @@ c           hdep1=int(hd*dble(n)+.5)
 
       if(n.gt.150) khulp=nceil(n,3)-20
 
-      CALL ISODEPTH(N,M,X,Y,N,n*(n-1)/2,MAXNUM,NRANK,D,F,BETA,
+      CALL ISODEPTH(N,M,X,Y,MAXNUM,NRANK,D,F,BETA,
      +  KAND1,KAND2,ALPHA,IND1,IND2,NCIRQ,MCIRQ,ANGLE,KORNR,L,
-     +  JRV,JLV,DPF,NUM,kk,khulp,EMPTY,moredith,eps
-     +  ,tm,factor)
+     +  DPF,NUM,kk,khulp,EMPTY,moredith,eps
+     +  ,factor)
 
       if (empty.eq.1) then
           missing(t)=-1
@@ -3597,29 +3627,28 @@ c           hdep1=int(hd*dble(n)+.5)
 
 c ---------------------------------------------------------------------
 
-      SUBROUTINE ISODEPTH(N,M,X,Y,maxn,maxm,MAXNUM,NRANK,D,F,BETA,
+      SUBROUTINE ISODEPTH(N,M,X,Y,MAXNUM,NRANK,D,F,BETA,
      +  KAND1,KAND2,ALPHA,IND1,IND2,NCIRQ,MCIRQ,ANGLE,KORNR,L,
-     +  JRV,JLV,DPF,NUM,K,khulp,EMPTY,moredith,eps,tm,factor)
+     +  DPF,NUM,K,khulp,EMPTY,moredith,eps,factor)
 C
 C  Computes the depth contour of depth k. This subroutine was described
 C  in: Ruts, I., and Rousseeuw, P.J. (1996). Computing depth contours
 C  of bivariate point clouds. Computational Statistics and Data Analysis
 C  23, 153-168.
 C
-      integer maxn,maxm,maxnum,jlv,jrv,firstiw2,tm
+      integer maxnum,firstiw2
       INTEGER NCIRQ(N),MCIRQ(N),NRANK(N),F(N)
-      DIMENSION JLV(N),JRV(N)
       INTEGER IND1(M),IND2(M),hdep2,hdep3,hdep4,hdep5
       INTEGER KAND1(MAXNUM),KAND2(MAXNUM),KORNR(MAXNUM,4)
       INTEGER KON,KONTROL,NDATA,NDK,HALT,halt2,jj,JFULL,EMPTY
       INTEGER IV,IW1,IW2,NEXT,JFLAG,KOUNT,NUM
-      INTEGER HDEP1,I,J,K,L,M,N,moredith,sdep
+      INTEGER HDEP1,I,J,K,L,M,N,moredith
       INTEGER zoek,iw2nu,zold,khulp,NLOOP,iw1old,iw2old
       integer overschr,firstiw1,iw1oldloop
-      REAL*8 X(N),Y(N),BETA(N)
-      REAL*8 ANGLE(M),D(M),ALPHA(MAXNUM),DPF(N)
-      REAL*8 PI,PI2,EPS,factor
-      REAL*8 XCORD,YCORD,ANG1,m1,m2,xcord1,ycord1
+      double precision X(N),Y(N),BETA(N)
+      double precision ANGLE(M),D(M),ALPHA(MAXNUM),DPF(N)
+      double precision PI,PI2,EPS,factor
+      double precision XCORD,YCORD,ANG1,m1,m2,xcord1,ycord1
       PI=DACOS(DBLE(-1.0))
       PI2=PI/2.0
 
@@ -3862,7 +3891,7 @@ C
       IF ((DSIN(ALPHA(KON))*XCORD-DCOS(ALPHA(KON))*YCORD
      +     -D(KON)).le.eps) THEN
 
-      CALL TUKDEPTH(XCORD,YCORD,N,X,Y,BETA,F,DPF,JLV,JRV,HDEP1,sdep,eps)
+      CALL TUKDEPTH(XCORD,YCORD,N,X,Y,BETA,F,DPF,HDEP1,eps)
 
 c      hdep1=int(hd*dble(n)+.5)
 
@@ -4092,23 +4121,23 @@ C  k-divider which corresponds to ALPHA(KON). If so, compute its depth.
 C
       IF ((DSIN(ALPHA(KON))*XCORD-DCOS(ALPHA(KON))*YCORD
      +     -D(KON)).LE.eps) THEN
-      CALL TUKDEPTH(XCORD,YCORD,N,X,Y,BETA,F,DPF,JLV,JRV,HDEP1,sdep,eps)
+      CALL TUKDEPTH(XCORD,YCORD,N,X,Y,BETA,F,DPF,HDEP1,eps)
 c      hdep1=int(hd*dble(n)+.5)
 
 
       IF (HDEP1.EQ.K) NDK=1
       IF (HDEP1.NE.K) THEN
       CALL TUKDEPTH(XCORD-EPS*2,YCORD-EPS*10,N,X,Y,BETA,F,DPF,
-     +  JLV,JRV,HDEP2,sdep,eps)
+     +  HDEP2,eps)
 c      hdep2=int(hd*dble(n)+.5)
       CALL TUKDEPTH(XCORD+EPS*2,YCORD+EPS*10,N,X,Y,BETA,F,DPF,
-     +  JLV,JRV,HDEP3,sdep,eps)
+     +  HDEP3,eps)
 c      hdep3=int(hd*dble(n)+.5)
       CALL TUKDEPTH(XCORD-EPS*2,YCORD+EPS*10,N,X,Y,BETA,F,DPF,
-     +  JLV,JRV,HDEP4,sdep,eps)
+     +  HDEP4,eps)
 c      hdep4=int(hd*dble(n)+.5)
       CALL TUKDEPTH(XCORD+EPS*2,YCORD-EPS*10,N,X,Y,BETA,F,DPF,
-     +  JLV,JRV,HDEP5,sdep,eps)
+     +  HDEP5,eps)
 c      hdep5=int(hd*dble(n)+.5)
 
       IF ((NDK.EQ.0).AND.
@@ -4233,7 +4262,7 @@ C  Sorts a real array B of length N and permutes two integer arrays
 C  I1 and I2 and one real array R in the same way.
 C
       INTEGER i,N,q(n),I1(n),I2(n),II1(n),II2(n)
-      REAL*8 R(n),rr(n),b(n),x(n)
+      double precision R(n),rr(n),b(n),x(n)
 
       call indexx(n,b,q)
       
@@ -4265,8 +4294,8 @@ C
       INTEGER NCIRQ(N),NRANK(N),IND1(M),IND2(M)
       INTEGER KAND1(MAXNUM),KAND2(MAXNUM)
       INTEGER KOUNT,K,L,N,IV,IV1,IV2,D1,D2
-      REAL*8 X(N),Y(N),ANGLE(M),D(M)
-      REAL*8 ALPHA(MAXNUM),DUM,PI,PI2
+      double precision X(N),Y(N),ANGLE(M),D(M)
+      double precision ALPHA(MAXNUM),DUM,PI,PI2
       PI=DACOS(DBLE(-1.0))
       PI2=PI/2.0
       D1=IND1(L)
@@ -4315,17 +4344,17 @@ C
       
 c ---------------------------------------------------------------------
 
-      SUBROUTINE tukDEPTH(U,V,N,X,Y,BETA,F,DPF,JLV,JRV,HDEP,sdep,epsi)
+      SUBROUTINE tukDEPTH(U,V,N,X,Y,BETA,F,DPF,HDEP,epsi)
 C
 C  Computes the halfspace depth of a point. This subroutine was described
 C  in: Rousseeuw, P.J. and Ruts, I. (1996). AS 307:  Bivariate location 
 C  depth, Applied Statistics (JRSS-C) 45, 516-526.
 C
-      integer n,jlv,jrv,numh,nz,i,nn,nu,ja,jb,nn2,nbad,nf,j,k,ki
-      REAL*8 U,V,BETA(N),X(N),Y(N),DPF(N)
-      REAL*8 P,P2,EPSI,D,XU,YU,ANGLE,ALPHK,BETAK
-      INTEGER F(N),GI,HDEP,sdep
-      DIMENSION JLV(N),JRV(N)
+      integer n,numh,nz,i,nn,nu,ja,jb,nn2,nbad,nf,j,k,ki
+      double precision U,V,BETA(N),X(N),Y(N),DPF(N)
+      double precision P,P2,EPSI,D,XU,YU,ANGLE,ALPHK,BETAK
+      INTEGER F(N),GI,HDEP
+
       NUMH=0
       HDEP=0
       IF (N.LT.1) RETURN
@@ -4455,8 +4484,7 @@ C  Adjust for the number NZ of data points equal to Z=(U,V):
 C
    60 NUMH=NUMH+NZ
       HDEP=NUMH
-      
-      IF (N.GE.3) SDEP=(NUMS+0.0)/(K(N,3)+0.0)
+
       RETURN
       END
 
@@ -4548,7 +4576,7 @@ CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 
 
       implicit double precision (a-h,o-z)
-      integer maxn,maxp,n,np,ndir,n4,err(n4),errc
+      integer maxn,maxp,n,np,p,ndir,n4,err(n4),errc
       integer nddpst,nstp,ntry,nalt,nrun,j,l,numh,nt,mindep,nceil2,i
       integer nsa,ngen,ind,jdir,nmin,nmax,nsin,ji,nsamp,ierr
       integer nid,nidalt,ndstep,ndold,nstep,inalt,nrankl,nrankg

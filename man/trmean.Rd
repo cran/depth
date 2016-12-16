@@ -43,11 +43,6 @@ mu1 <- c(0,0); mu2 <- c(6,0); sigma <- matrix(c(1,0,0,1), nc = 2)
 mixbivnorm <- rbind(mvrnorm(80, mu1, sigma), mvrnorm(20, mu2, sigma))
 trmean(mixbivnorm, 0.3)
 
-## example with a large data set
-set.seed(345)
-x <- matrix(rnorm(2100), nc = 3)
-trmean(x, .1, approx = TRUE)
-
 ## trimmed mean with a non constant weight function
 W1 <-function(x,alpha,epsilon) {
   (2*(x-alpha)^2/epsilon^2)*(alpha<=x)*(x<alpha+epsilon/2)+

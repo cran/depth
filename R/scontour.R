@@ -54,25 +54,25 @@ affichemed=FALSE,title="Contour circulaire de Tukey",
 ylab="Profondeur circulaire de Tukey",xlab=expression(theta),medianecol=2,
 pointscol=1)
 #Cette fonction trace le graphe complet de la profondeur de Tukey sur 
-#le cercle par rapport à un échantillon de n points en position géné-
+#le cercle par rapport a un echantillon de n points en position gene-
 #rale.
-#Entrée obligatoire : 
-#-Un vecteur P contenant un échantillon de n points en coordonnées 
-#polaires. le nombre de points doit être supérieur ou égale à 2.
-#Entrées optionnelles: 
-#-tracepoints=T: ajoute les points de l'échantillon sur le graphique à 
+#Entree obligatoire : 
+#-Un vecteur P contenant un echantillon de n points en coordonnees 
+#polaires. le nombre de points doit etre superieur ou egale a 2.
+#Entrees optionnelles: 
+#-tracepoints=T: ajoute les points de l'echantillon sur le graphique a
 #la hauteur de leur profondeur respective.
-#-mediane=T: ajoute le point median sur le graphique à la hauteur de 
+#-mediane=T: ajoute le point median sur le graphique a la hauteur de 
 #sa profondeur. 	
 #-maxprof=T: affiche la valeur de la profondeur maximale.
 #-affichemed=T: affiche la valeur du point median.
-#-title="titre": ajoute le titre souhaité au graphique
-#-ylab="axe des y": ajoute le titre souhaité pour l'axe des ordonnées.
-#-xlab="axe des x": ajoute le titre souhaité pour l'axe des abcisses.
-#-medianecol="couleur": appose la couleur souhaitée au point median si 
+#-title="titre": ajoute le titre souhaite au graphique
+#-ylab="axe des y": ajoute le titre souhaite pour l'axe des ordonnees.
+#-xlab="axe des x": ajoute le titre souhaite pour l'axe des abcisses.
+#-medianecol="couleur": appose la couleur souhaitee au point median si 
 #mediane=T.
-#-pointscol="couleur": appose la couleur souhaitée pour les points de 
-#l'échantillon apparaissant sur le graphique.
+#-pointscol="couleur": appose la couleur souhaitee pour les points de 
+#l'echantillon apparaissant sur le graphique.
 #Sortie : 
 #-Le graphe complet de la profondeur de Tukey
 {
@@ -444,24 +444,24 @@ pointscol=1)
 
 STD=function(P,tracepoints=FALSE,colpoints="black",colarc="red",
 sizepoints=3,tracemed=TRUE)
-#Cette fonction trace tous les contours de Tukey à partir d'un 
-#échantillon sur la sphère en position générale.
-#Entrée obligatoire: 
-#-Une matrice dont chaque ligne représente un point de l'échantillon 
-#donné en coordonnées cartésiennes.
-#Entrées optionelles:
-#1:tracepoints=T pour ajouter les points de l'échantillon sur le 
+#Cette fonction trace tous les contours de Tukey a partir d'un 
+#echantillon sur la sphere en position generale.
+#Entree obligatoire: 
+#-Une matrice dont chaque ligne represente un point de l'echantillon 
+#donne en coordonnees cartesiennes.
+#Entrees optionelles:
+#1:tracepoints=T pour ajouter les points de l'echantillon sur le 
 #graphique.
-#2:colpoints="couleur" contrôle la couleur des points.
-#3:colarc="couleur" contrôle la couleur des arcs de cercles formant les  
-#côtés des polygones sphériques.
-#4:sizepoints contrôle la grosseur des points.
-#5:tracemed=T permet d'ajouter la médiane au graphique.
-#Sorties: Une liste à 2 composantes:
-#1:Un vecteur contenant la liste des profondeurs des régions tronquées  
+#2:colpoints="couleur" controle la couleur des points.
+#3:colarc="couleur" controle la couleur des arcs de cercles formant les  
+#cotes des polygones spheriques.
+#4:sizepoints controle la grosseur des points.
+#5:tracemed=T permet d'ajouter la mediane au graphique.
+#Sorties: Une liste a 2 composantes:
+#1:Un vecteur contenant la liste des profondeurs des regions tronquees  
 #dans l'ordre croissant. 
 #2:Une liste dont chaque composante est une matrice contenant les  
-#sommets de chaque région tronquée.
+#sommets de chaque region tronquee.
 {
   npoints=nrow(P)
   tukdepths=NA
@@ -518,7 +518,7 @@ sizepoints=3,tracemed=TRUE)
     profondeur=profondeur+1/(npoints)
     pointsregion=B[[1]]
 		
-    if((is(pointsregion,"matrix"))==0)
+    if((is.matrix(pointsregion))==0)
     {
       npointsregion=1
     }
@@ -576,7 +576,7 @@ sizepoints=3,tracemed=TRUE)
   }
   if(tracemed==TRUE)
   {	
-    if(is(Som[[nreg]],"matrix")==0)
+    if(is.matrix(Som[[nreg]])==0)
     {
       rgl.points(Som[[nreg]][1],Som[[nreg]][2],Som[[nreg]][3],size=3,
       col="green",pch=8)
@@ -594,47 +594,47 @@ return(list(region,Som,med))
 
 espacetronque=function(P,alpha,demicalcul=FALSE,pointshemi=NA,
 tukdepthscalcul=FALSE,tukdepths=NA,derniereregion=FALSE,normsdern=NA)
-#Cette fonction calcule le polygone sphérique formant la frontière d'une
-#région tronquée par rapport à un échantillon en position générale sur 
-#la sphère à l'aide de la notion de profondeur sphérique empirique de 
+#Cette fonction calcule le polygone spherique formant la frontiere d'une
+#region tronquee par rapport a un echantillon en position generale sur 
+#la sphere a l'aide de la notion de profondeur spherique empirique de 
 #Tukey.
-#Entrées obligatoires:
-#-Une matrice décrivant l'échantillon. Chaque ligne est un point 
-#de la sphère en coordonnées cartésiennes. Le nombre de points doit 
-#être d'au moins 3.
-#-Un nombre "alpha" représentant la borne inférieure de la profondeur 
-#de la égion tronquée que l'on souhaite obtenir. alpha doit être de la
-#forme k/n ou n est la taille de l'échantillon.
-#Entrées optionnelles:
-#-demicalcul=T indique que pointshemi a déjà été calculé. La valeur F 
-#est donnée par défaut.
-#-Dans le cas où demicalcul=T, pointshemi doit contenir une liste à  
-#quatre composantes qui est calculée par pointshemi (voir la fonction 
+#Entrees obligatoires:
+#-Une matrice decrivant l'echantillon. Chaque ligne est un point 
+#de la sphere en coordonnees cartesiennes. Le nombre de points doit 
+#etre d'au moins 3.
+#-Un nombre "alpha" representant la borne inferieure de la profondeur 
+#de la egion tronquee que l'on souhaite obtenir. alpha doit etre de la
+#forme k/n ou n est la taille de l'echantillon.
+#Entrees optionnelles:
+#-demicalcul=T indique que pointshemi a deja ete calcule. La valeur F 
+#est donnee par defaut.
+#-Dans le cas ou demicalcul=T, pointshemi doit contenir une liste a  
+#quatre composantes qui est calculee par pointshemi (voir la fonction 
 #pointshemi).
 #-tukdepthscalcul=T indiquent si la profondeur en chaque points de 
-#l'échantillon a été calculée.
-#-Dans le cas où tukdepthscalcul=T, tukdepths doit être un vecteur où 
-#l'entrée j est la profondeur de Tukey au j ième point de 
-#l'échantillon.
-#-derniereregion=T indique que le calcul d'une région tronquée de 
-#profondeur inférieur a déjà été caculé.
-#-Dans le cas où derniereregion=T, normsdern doit contenir la matrice 
-#contenant les vecteurs normaux associés aux côtés du polygone 
-#sphérique correspondant à la région tronquée antérieure.
-#Les 4 dernières options sont utilisés par défaut par la fonction STD() 
+#l'echantillon a ete calculee.
+#-Dans le cas ou tukdepthscalcul=T, tukdepths doit etre un vecteur ou 
+#l'entree j est la profondeur de Tukey au j ieme point de 
+#l'echantillon.
+#-derniereregion=T indique que le calcul d'une region tronquee de 
+#profondeur inferieur a deja ete cacule.
+#-Dans le cas ou derniereregion=T, normsdern doit contenir la matrice 
+#contenant les vecteurs normaux associes aux cotes du polygone 
+#spherique correspondant a la region tronquee anterieure.
+#Les 4 dernieres options sont utilises par defaut par la fonction STD() 
 #et il n'est pas essentiel pour l'utilisateur de bien comprendre leur 
 #fonctionnement.
 #Sorties:
-#-Une liste à 4 composantes:
-#1:Une matrice de points de la sphère. Ce sont les sommets du polygone 
-#sphérique. 
+#-Une liste a 4 composantes:
+#1:Une matrice de points de la sphere. Ce sont les sommets du polygone 
+#spherique. 
 #2:Une matrice de deux colonnes dont chaque ligne sont les deux indices 
-#des points de la matrice de la sortie 1 formant un côté du polygone 
-#sphérique. 
-#3:Un scalaire valant 0,1 ou 2 selon le cas où l'espace tronqué est  
-#vide, un polygone sphérique ou la sphère au complet, respectivement. 
-#4:La matrice des vecteurs normaux associés à chaque face du polygone 
-#sphérique.
+#des points de la matrice de la sortie 1 formant un cote du polygone 
+#spherique. 
+#3:Un scalaire valant 0,1 ou 2 selon le cas ou l'espace tronque est  
+#vide, un polygone spherique ou la sphere au complet, respectivement. 
+#4:La matrice des vecteurs normaux associes a chaque face du polygone 
+#spherique.
 {
   npoints=nrow(P)
   alpha=alpha*npoints
@@ -833,24 +833,24 @@ tukdepthscalcul=FALSE,tukdepths=NA,derniereregion=FALSE,normsdern=NA)
 
 
 pointshemi=function(P)
-#La fonction pointshemi calcule le nombre de points de l'échantillon
-#contenus dans chacun des hémisphères dont la frontière est un grand 
-#cercle passant par deux points de l'échantillon. 
-#Entrées:
-#-Une matrice dont chaque ligne contient un point de l'échantillon en 
-#coordonnées cartésiennes.
+#La fonction pointshemi calcule le nombre de points de l'echantillon
+#contenus dans chacun des hemispheres dont la frontiere est un grand 
+#cercle passant par deux points de l'echantillon. 
+#Entrees:
+#-Une matrice dont chaque ligne contient un point de l'echantillon en 
+#coordonnees cartesiennes.
 #Sorties:
-#-Une liste à 4 composantes.
-#1:Un vecteur dont la j ième composante est le nombre de points contenus 
-#dans l'hémisphère dont la frontière est le grand cercle j et se situant 
-#du côté du vecteur normal j.
-#2:Un vecteur dont la j ième composante est le nombre de points contenus 
-#dans l'hémisphère dont la frontière est le grand cercle j et se situant 
-#du côté inverse du vecteur normal j.
+#-Une liste a 4 composantes.
+#1:Un vecteur dont la j ieme composante est le nombre de points contenus 
+#dans l'hemisphere dont la frontiere est le grand cercle j et se situant 
+#du cote du vecteur normal j.
+#2:Un vecteur dont la j ieme composante est le nombre de points contenus 
+#dans l'hemisphere dont la frontiere est le grand cercle j et se situant 
+#du cote inverse du vecteur normal j.
 #3:Une matrice dont la ligne j est un vecteur normal du plan contenant  
 #le grands cercles j.   
 #4:Une matrice (2 parmi n) x 2 contenant les 2 parmi n combinaisons 
-#formant les grands cercles délimitant les hémisphères.
+#formant les grands cercles delimitant les hemispheres.
 {
 
 npoints=nrow(P)
@@ -904,18 +904,18 @@ return(0)
 
 tukdepthsdemi=function(P,demi,nombrepoints,normale,theta)
 #Cette fonction calcule la profondeur de Tukey lorsque le nombre de  
-#points contenue dans chaque hémisphère (formée à partir de deux 
-#points de l'échantillon) a déjà été calculé.
-#Entrées: 
-#1:P contient les points de l'échantillons
-#2:demi contient les indices des points (en rapport avec P) à partir 
-#desquels sont formés les grands cercles formants le bord des 
-#hémisphères.
-#3:nombrepoints est un vecteur dont l'entrée j donne le nombre de 
-#points que contient l'hémisphère j. 
+#points contenue dans chaque hemisphere (formee a partir de deux 
+#points de l'echantillon) a deja ete calcule.
+#Entrees: 
+#1:P contient les points de l'echantillons
+#2:demi contient les indices des points (en rapport avec P) a partir 
+#desquels sont formes les grands cercles formants le bord des 
+#hemispheres.
+#3:nombrepoints est un vecteur dont l'entree j donne le nombre de 
+#points que contient l'hemisphere j. 
 #4:normale contient une matrice dont la ligne j contient un vecteur 
-#normal indiquant le sens de l'hémisphère j.
-#5:theta est le point de la sphère auquel on veut calculer la 
+#normal indiquant le sens de l'hemisphere j.
+#5:theta est le point de la sphere auquel on veut calculer la 
 #profondeur.
 #Sortie: La profondeur de Tukey.
 {
@@ -948,22 +948,22 @@ tukdepthsdemi=function(P,demi,nombrepoints,normale,theta)
 }
 
 tukdepthsdemiineg=function(P,demi,nombrepoints,normale,theta,alpha)
-#Cette fonction vérifie si la profondeur de Tukey est plus petite que 
-#alpha lorsque le nombre de points contenue dans chaque hémisphère a 
-#déjà été calculé.
+#Cette fonction verifie si la profondeur de Tukey est plus petite que 
+#alpha lorsque le nombre de points contenue dans chaque hemisphere a 
+#deja ete calcule.
 #Retourne 1 si oui et 0 sinon.
-#Entrées:
-#1:P contient les points de l'échantillons
-#2:demi contient les indices des points (en rapport avec P) à partir 
-#desquels sont formés les grands cercles formants le bord des 
-#hémisphères.
-#3:nombrepoints est un vecteur dont l'entrée j donne le nombre de 
-#points que contient l'hémisphère j. 
+#Entrees:
+#1:P contient les points de l'echantillons
+#2:demi contient les indices des points (en rapport avec P) a partir 
+#desquels sont formes les grands cercles formants le bord des 
+#hemispheres.
+#3:nombrepoints est un vecteur dont l'entree j donne le nombre de 
+#points que contient l'hemisphere j. 
 #4:normale contient une matrice dont la ligne j contient un vecteur 
-#normal indiquant le sens de l'hémisphère j.
-#5:theta est le point de la sphère auquel on veut tester la 
+#normal indiquant le sens de l'hemisphere j.
+#5:theta est le point de la sphere auquel on veut tester la 
 #profondeur.
-#6:critère de comparaison pour la profondeur de Tukey.
+#6:critere de comparaison pour la profondeur de Tukey.
 #Sorties: 1 ou 0.
 {
   npoints=nrow(P)
@@ -999,13 +999,13 @@ tukdepthsdemiineg=function(P,demi,nombrepoints,normale,theta,alpha)
 }
 
 intersect=function(N1,N2)
-#Cette fonction calcule les deux points formés par l'intersection
-#de la sphère unité et de deux plans sécants passant par l'origine. 
-#Entrées:-N1 et N2 doivent être les vecteurs normaux respectifs des 
+#Cette fonction calcule les deux points formes par l'intersection
+#de la sphere unite et de deux plans secants passant par l'origine. 
+#Entrees:-N1 et N2 doivent etre les vecteurs normaux respectifs des 
 #plans.
-#Sorties: Une liste à 3 composantes.
+#Sorties: Une liste a 3 composantes.
 #1: Le premier point d'intersection.
-#2: Le deuxième point d'intersection.
+#2: Le deuxieme point d'intersection.
 #3: Le nombre 1.
 {
   vect=prodvect2(rbind(N1,N2,c(0,0,0)))
@@ -1019,7 +1019,7 @@ intersect=function(N1,N2)
 
 tracearc=function(P1,P2,colarc="red")
 #La fonction trace l'arc de grand cercle reliant les points P1 et P2.
-#Entrées:
+#Entrees:
 #-Les deux points.
 #-La couleur de l'arc.
 {
@@ -1039,13 +1039,13 @@ rgl.linestrips(P[,1],P[,2],P[,3],size=2,col=colarc)
 
 
 schema.polyspher=function(P)
-#Cette fonction calule les côtés d'un polygone sphérique à partir 
+#Cette fonction calule les cotes d'un polygone spherique a partir 
 #des sommets.
-#Entrée:
-#-Une matrice P contenant les sommets du polygone sphérique.
+#Entree:
+#-Une matrice P contenant les sommets du polygone spherique.
 #Sortie:
-#-Une matrice ayant deux colonnes dont chaque ligne contient le numéro 
-#des sommets formant une face du polygone sphérique.
+#-Une matrice ayant deux colonnes dont chaque ligne contient le numero 
+#des sommets formant une face du polygone spherique.
 {
   npoints=nrow(P)
   G=combn(c(1:npoints),2)
@@ -1107,17 +1107,17 @@ return(list(faces,matnormale))
 
 
 tracepolyspher=function(P,faces,colarc="red")
-#Cette fonction trace un polygone sphérique de la couleur désirée 
-#à partir des sommets et des faces d'un polygone sphérique. 
-#Une fenêtre graphique du type "rgl" avec la sphère doit être 
-#ouverte préalablement, à l'aide des lignes de codes >rgl.open(),
+#Cette fonction trace un polygone spherique de la couleur desiree 
+#a partir des sommets et des faces d'un polygone spherique. 
+#Une fenetre graphique du type "rgl" avec la sphere doit etre 
+#ouverte prealablement, a l'aide des lignes de codes >rgl.open(),
 #>rgl.spheres(0,0,0,1) 
-#Entrées:
+#Entrees:
 #-Une matrice contenant les sommets du polygones.
 #-Une matrice contenant les faces.
-#-La couleur désirée.
+#-La couleur desiree.
 #Sortie:
-#-Le graphique du polygone sphérique.
+#-Le graphique du polygone spherique.
 {
   nfaces=nrow(faces)
   for(i in 1:nfaces)
@@ -1129,47 +1129,47 @@ tracepolyspher=function(P,faces,colarc="red")
 traceregion=function(P,alpha,tracepoints=FALSE,rgl=FALSE,open=FALSE,
 colpoints="black",colarc="red",sizepoints=3,demicalcul=FALSE,pointshemi=NA,
 tukdepthscalcul=FALSE,tukdepths=NA,derniereregion=FALSE,normsdern=NA)
-#Cette fonction trace le polygone sphérique découpant une région 
-#tronquée par la profondeur de Tukey sur la sphère.
-#Entrées obligatoires:
-#-Une matrice contenant les points de l'échantillon.
-#-La profondeur minimale de l'espace tronquée.
-#Entrées optionnelles:
-#-tracepoints=F détermine si l'on souhaite faire apparaître les points 
-#de l'échantillon sur la sphère.
-#-rgl=F détermine si une fenêtre rgl a déjà été préparée ou pas.
-#-colpoints="black" détermine la couleur des points de l'échantillon  
+#Cette fonction trace le polygone spherique decoupant une region 
+#tronquee par la profondeur de Tukey sur la sphere.
+#Entrees obligatoires:
+#-Une matrice contenant les points de l'echantillon.
+#-La profondeur minimale de l'espace tronquee.
+#Entrees optionnelles:
+#-tracepoints=F determine si l'on souhaite faire apparaitre les points
+#de l'echantillon sur la sphere.
+#-rgl=F determine si une fenetre rgl a deja ete preparee ou pas.
+#-colpoints="black" determine la couleur des points de l'echantillon  
 #(si tracepoints=T)
-#-colarc="red" détermine la couleur des côtés des polygones sphériques 
+#-colarc="red" determine la couleur des cotes des polygones spheriques 
 #apparaissant.
-#-sizepoints=3 détermine la grosseur des points.
-#-demicalcul=T indique que pointshemi a déjà été calculé. La valeur F 
-#est donnée par défaut.
-#-Dans le cas où demicalcul=T, pointshemi doit contenir une liste à  
-#quatre composantes qui est calculée par pointshemi (voir la fonction 
+#-sizepoints=3 determine la grosseur des points.
+#-demicalcul=T indique que pointshemi a deja ete calcule. La valeur F 
+#est donnee par defaut.
+#-Dans le cas ou demicalcul=T, pointshemi doit contenir une liste a  
+#quatre composantes qui est calculee par pointshemi (voir la fonction 
 #pointshemi).
 #-tukdepthscalcul=T indiquent si la profondeur en chaque points de 
-#l'échantillon a été calculée.
-#-Dans le cas où tukdepthscalcul=T, tukdepths doit être un vecteur où 
-#l'entrée j est la profondeur de Tukey au j ième point de l'échantillon.
-#-derniereregion=T indique que le calcul d'une région tronquée de 
-#profondeur inférieur a déjà été caculé.
-#-Dans le cas où derniereregion=T, normsdern doit contenir la matrice  
-#contenant les vecteurs normales associé aux côtés du polygone  
-#sphérique correspondant à la région tronquée antérieur.
-#Les 4 dernières options sont utilisés par défaut par la fonction STD()  
+#l'echantillon a ete calculee.
+#-Dans le cas ou tukdepthscalcul=T, tukdepths doit etre un vecteur ou 
+#l'entree j est la profondeur de Tukey au j ieme point de l'echantillon.
+#-derniereregion=T indique que le calcul d'une region tronquee de 
+#profondeur inferieur a deja ete cacule.
+#-Dans le cas ou derniereregion=T, normsdern doit contenir la matrice  
+#contenant les vecteurs normales associe aux cotes du polygone  
+#spherique correspondant a la region tronquee anterieur.
+#Les 4 dernieres options sont utilises par defaut par la fonction STD()  
 #et il n'est pas essentiel pour l'utilisateur de bien comprendre leur 
 #fonctionnement.
 #Sorties:
-#-Le graphe du polygone sphérique déterminant la région tronquée.
-#-Une liste à 4 composantes:
-#1:Les points représentant les sommets de la région tronquée (polygone 
-#sphérique).
-#2:Les faces du polygone sphérique en question. 
-#3:Un scalaire valant 0,1 ou 2 selon le cas où l'espace tronqué est 
-#vide, un polygone sphérique ou la sphère au complet respectivement.   
-#4:La matrice des vecteurs normales aux faces du polygone sphérique.
-#polygone sphérique ou la sphère au complet respectivement. 
+#-Le graphe du polygone spherique determinant la region tronquee.
+#-Une liste a 4 composantes:
+#1:Les points representant les sommets de la region tronquee (polygone 
+#spherique).
+#2:Les faces du polygone spherique en question. 
+#3:Un scalaire valant 0,1 ou 2 selon le cas ou l'espace tronque est 
+#vide, un polygone spherique ou la sphere au complet respectivement.   
+#4:La matrice des vecteurs normales aux faces du polygone spherique.
+#polygone spherique ou la sphere au complet respectivement. 
 {
   A=espacetronque(P,alpha,demicalcul=demicalcul,pointshemi=pointshemi,
   tukdepthscalcul=tukdepthscalcul,tukdepths=tukdepths,
@@ -1187,7 +1187,7 @@ tukdepthscalcul=FALSE,tukdepths=NA,derniereregion=FALSE,normsdern=NA)
       rgl.spheres(0,0,0,1)
     }
 
-    if(is(pointsregion,"matrix")==0)
+    if(is.matrix(pointsregion)==0)
     {
       rgl.points(pointsregion[1],pointsregion[2],pointsregion[3],size=3,
       col="red")
@@ -1207,15 +1207,15 @@ tukdepthscalcul=FALSE,tukdepths=NA,derniereregion=FALSE,normsdern=NA)
 
 
 sphericaldevide=function(sommets,faces)
-#Cette fonctions découpe un polygone sphérique en triangles 
-#sphérique ayant tous des angles inférieur à pi.
-#Entrées:
-#1: sommets est une matrice n par 3 décrivant les n sommets du polygone.
-#2: faces est une matrice n par 2 décrivant les n côtés du polygone
-#sphérique à l'aides d'indices référants aux entrées de la matrice de 
+#Cette fonctions decoupe un polygone spherique en triangles 
+#spherique ayant tous des angles inferieur a pi.
+#Entrees:
+#1: sommets est une matrice n par 3 decrivant les n sommets du polygone.
+#2: faces est une matrice n par 2 decrivant les n cotes du polygone
+#spherique a l'aides d'indices referants aux entrees de la matrice de 
 #sommets.
 #Sorties: Un tableau tridimentionnel de dimension m par 3 par 3 
-#décrivant m triangles sphériques subdivisant le polygone sphérique.
+#decrivant m triangles spheriques subdivisant le polygone spherique.
 {
   npoints=nrow(sommets)
   nfaces=nrow(faces)
@@ -1307,10 +1307,10 @@ sphericaldevide=function(sommets,faces)
 
 
 airtrispher=function(sommets)
-#Cette fonction calcule l'aire d'un triangle sphérique 
-#Entrée: Une matrice 3 par 3 dont chaque ligne est un sommet du 
-#triangle sphérique.
-#Sortie: L'aire du triangle sphérique.
+#Cette fonction calcule l'aire d'un triangle spherique 
+#Entree: Une matrice 3 par 3 dont chaque ligne est un sommet du 
+#triangle spherique.
+#Sortie: L'aire du triangle spherique.
 {
   angles=rep(NA,3)
   arcs=rep(NA,3)
@@ -1334,15 +1334,15 @@ airtrispher=function(sommets)
 }
 
 spherpolycentroide=function(sommets,faces)
-#Cette fonction calcule le centre de gravité projeté sur la sphère 
-#d'un polygone sphérique 
-# Entrées:
-#1:sommets est une matrice n par 3 décrivant les n sommets du polygone.
-#2:faces est une matrice n par 2 décrivant les n côtés du polygone 
-#sphérique à l'aides d'indices référants aux entrées de la matrice de 
+#Cette fonction calcule le centre de gravite projete sur la sphere 
+#d'un polygone spherique 
+# Entrees:
+#1:sommets est une matrice n par 3 decrivant les n sommets du polygone.
+#2:faces est une matrice n par 2 decrivant les n cotes du polygone 
+#spherique a l'aides d'indices referants aux entrees de la matrice de 
 #sommets.
-#Sortie: Un vecteur à trois entrées donnant le centre de gravité projeté 
-#sur la sphère du polygone sphérique. 
+#Sortie: Un vecteur a trois entrees donnant le centre de gravite projete 
+#sur la sphere du polygone spherique. 
 {
   sphertri=sphericaldevide(sommets,faces)
   ntri=dim(sphertri)[1]
@@ -1374,11 +1374,11 @@ spherpolycentroide=function(sommets,faces)
 
 
 cmsphertri=function(ABC)
-#Cette fonction calcule le centre de gravité d'un triangle sphérique.
-#Les angles sphérique du triangle doivent être plus petit que pi/2 rad.
-#Entrées: Une matrice 3 par 3 dont chaque ligne est un sommet du 
-#triangle sphérique.
-#Sortie: le centre de gravité du triangle sphérique
+#Cette fonction calcule le centre de gravite d'un triangle spherique.
+#Les angles spherique du triangle doivent etre plus petit que pi/2 rad.
+#Entrees: Une matrice 3 par 3 dont chaque ligne est un sommet du 
+#triangle spherique.
+#Sortie: le centre de gravite du triangle spherique
 {
   A=ABC[1,]
   B=ABC[2,]
@@ -1420,11 +1420,11 @@ cmsphertri=function(ABC)
 }
 
 cmsphertri2=function(ABC)
-#Cette fonction calcule le centre de gravité d'un triangle sphérique.
-#Les angles sphérique du triangle doivent être plus petit que pi/2 rad.
-#Entrées: Une matrice 3 par 3 dont chaque ligne est un sommet du 
-#triangle sphérique.
-#Sortie: le centre de gravité du triangle sphérique
+#Cette fonction calcule le centre de gravite d'un triangle spherique.
+#Les angles spherique du triangle doivent etre plus petit que pi/2 rad.
+#Entrees: Une matrice 3 par 3 dont chaque ligne est un sommet du 
+#triangle spherique.
+#Sortie: le centre de gravite du triangle spherique
 {
   A=ABC[1,]
   B=ABC[2,]

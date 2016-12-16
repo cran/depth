@@ -17,3 +17,7 @@
  - Creation of a NAMESPACE for the package, and minor changes
    in naming and in the treatment of the different data type as
    a consequence.
+
+2.1-0 (2016-12-15)
+
+ - Fixing problems with fortran code compilation reported by CRAN.

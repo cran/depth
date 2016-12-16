@@ -15,7 +15,10 @@ ojamed,
 ojaiso3d,
 iso3d
 )
-import(grDevices, rgl, circular)
+import(grDevices, circular, abind, rgl)
+importFrom("graphics", "lines", "plot", "plot.new", "points", "text")
+importFrom("stats", "median")
+importFrom("utils", "combn")
 export(
 depth,
 med,

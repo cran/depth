@@ -48,18 +48,18 @@ sdepth=function(theta,P){
 
 tukdepthc3<-function(P,theta)
 # Cette fonction calcule la profondeur circulaire de Tukey d'un point du 
-# cercle unité par rapport à  un échantillon de "n" points.
-# Entrées: 
-#-un échantillon de "n" points sur le cercle en coordonnées polaires.
-#-un angle entre 0 et 2*pi à partir duquel on veut calculer la 
+# cercle unite par rapport a un echantillon de "n" points.
+# Entrees: 
+#-un echantillon de "n" points sur le cercle en coordonnees polaires.
+#-un angle entre 0 et 2*pi a partir duquel on veut calculer la 
 #profondeur.
 # Sortie:  -Une liste de deux composantes:
-#1. Un vecteur représentant l'échantillon décalé de theta 
-#radians dans le sens horaire et dont les points sont placés en ordre
+#1. Un vecteur representant l'echantillon decale de theta 
+#radians dans le sens horaire et dont les points sont places en ordre
 #croissant.
-#2. Un nombre entre 0 et 1 représentant la profondeur angulaire selon la 
-#définition de Tukey de l'angle "theta" par rapportà l'échantillon de 
-#"n" points donné en entrée.
+#2. Un nombre entre 0 et 1 representant la profondeur angulaire selon la 
+#definition de Tukey de l'angle "theta" par rapporta l'echantillon de 
+#"n" points donne en entree.
 {
  npoints=length(P)
  	
@@ -74,15 +74,15 @@ tukdepthc3<-function(P,theta)
 
  points=P-theta+2*pi*((P-theta)<0)
 	
-#points contient les points de l'échantillon décallés de theta 
+#points contient les points de l'echantillon decalles de theta 
 #radians dans le sens horaire. On veut donc calculer la profondeur 
-#de Tukey du nouvel échantillon au point 0.
+#de Tukey du nouvel echantillon au point 0.
 	
  inter=c(0,points)	
  alpha=sort(inter)
 	
-#alpha est un vecteur dont la première entrée contient le point 0 et 
-#les autres entrées contiennent les points de l'échantillon classés 
+#alpha est un vecteur dont la premiere entree contient le point 0 et 
+#les autres entrees contiennent les points de l'echantillon classes 
 #en ordre croissant.
 
  retour1=alpha[-1]
@@ -101,12 +101,12 @@ tukdepthc3<-function(P,theta)
    tukdepthc=tukdepthc2(alpha[2:npoints])
  }
  
-#test sert à vérifier s'il y a des points qui se répetent, autrement 
-#dit s'il y a des points superposés dans l'échantillon de départ.
-#Si test égale 1 (i.e. s'il y a des points superposées), alors on 
+#test sert a verifier s'il y a des points qui se repetent, autrement 
+#dit s'il y a des points superposes dans l'echantillon de depart.
+#Si test egale 1 (i.e. s'il y a des points superposees), alors on 
 #utilisera la fonction tukdepthc2 pour faire le calcul de la 
-#profondeur de Tukey au point 0. Si test égale 0 (i.e. s'il n'y a
-#pas de points superposées), alors on utilisera l'algorithme plus 
+#profondeur de Tukey au point 0. Si test egale 0 (i.e. s'il n'y a
+#pas de points superposees), alors on utilisera l'algorithme plus 
 #performant en executant les lignes de codes ci-dessous.
 	
  else
@@ -127,9 +127,9 @@ tukdepthc3<-function(P,theta)
     }
     sigma=compteur
 		
-#beta est un vecteur contenant tous les points diamétralement opposés 
+#beta est un vecteur contenant tous les points diametralement opposes 
 #aux points de alpha. sigma contient le nombre de points de alpha qui 
-#sont inférieurs à pi radian.	
+#sont inferieurs a pi radian.	
 
 		gamma=c(alpha,beta)
 		
@@ -158,9 +158,9 @@ tukdepthc3<-function(P,theta)
     {
       if(gamma[k]==gamma[k+1] & w[k]==1 & w[k+1]==(-1))
       {	
-#Les sept lignes de codes ci-dessus et ci-dessous servent à s'assurer 
+#Les sept lignes de codes ci-dessus et ci-dessous servent a s'assurer 
 #que les points de type beta apparaissent avant les points de type 
-#alpha en cas d'égalité. 				
+#alpha en cas d'egalite. 				
 
         trans=gamma[k]
         gamma[k]=gamma[k+1]
@@ -174,8 +174,8 @@ tukdepthc3<-function(P,theta)
       {
         flag[k]=1
       }
-#flag sert à indiquer où se trouve dans le vecteur gamma les points de 
-#type beta égaux à des points de type alpha.
+#flag sert a indiquer ou se trouve dans le vecteur gamma les points de 
+#type beta egaux a des points de type alpha.
  
     }
     for(j in c((npoints+2):(2*npoints),1:npoints))
@@ -224,15 +224,15 @@ tukdepthc3<-function(P,theta)
 }
 tukdepthc2<-function(P)
 #Cette fonction calcule la profondeur angulaire empirique de Tukey au 
-#point 0 par rapport à l'échantillon P de n points sur le cercle. 
-#Cette fonction est utilisée par la fonction tukdepthc3.
-#Entrée:
-#-Un échantillon de n points en coordonnées polaires sur le cercle.
+#point 0 par rapport a l'echantillon P de n points sur le cercle. 
+#Cette fonction est utilisee par la fonction tukdepthc3.
+#Entree:
+#-Un echantillon de n points en coordonnees polaires sur le cercle.
 #Sortie:-Une liste de deux composantes:
-#1. Un vecteur représentant l'échantillon donnée en entrée.
-#2. nombre entre 0 et 1 représentant la profondeur angulaire selon la 
-#définition de Tukey de l'angle 0 par rapport à l'échantillon de "n" 
-#points donnée en entré.
+#1. Un vecteur representant l'echantillon donnee en entree.
+#2. nombre entre 0 et 1 representant la profondeur angulaire selon la 
+#definition de Tukey de l'angle 0 par rapport a l'echantillon de "n" 
+#points donnee en entre.
 {
   vect=NULL
   npoints=length(P)
@@ -341,20 +341,20 @@ whichdemi<-function(x,theta)
 
 tukdepths2=function(P,theta,spherique=FALSE)
 #Cette fonction calcule la profondeur angulaire de Tukey d'un point de 
-#la sphère unité par rapport à un échantillon de "n" points. n>1.
-#Cette fonction fonctionne pour un échantillon en position générale
+#la sphere unite par rapport a un echantillon de "n" points. n>1.
+#Cette fonction fonctionne pour un echantillon en position generale
 #seulement.
-#Entrées: 
-#-P est un échantillon de "n" points sur la sphère en coordonnées 
-#sphériques ou cartésiennes.
-#-theta est un point sur la sphère en coordonnées sphériques ou 
-#cartésiennes à partir duquel on veut calculer la profondeur.
-#-spherique=T si l'échantillon P et theta sont données en coordonnées 
-#sphérique, spherique=F sinon.
+#Entrees: 
+#-P est un echantillon de "n" points sur la sphere en coordonnees 
+#spheriques ou cartesiennes.
+#-theta est un point sur la sphere en coordonnees spheriques ou 
+#cartesiennes a partir duquel on veut calculer la profondeur.
+#-spherique=T si l'echantillon P et theta sont donnees en coordonnees 
+#spherique, spherique=F sinon.
 # Sortie: 
-#-Un nombre entre 0 et 1 représentant la profondeur angulaire 
-#selon la définition de Tukey du point theta par rapport à 
-#l'échantillon de "n" points données en entrées.
+#-Un nombre entre 0 et 1 representant la profondeur angulaire 
+#selon la definition de Tukey du point theta par rapport a 
+#l'echantillon de "n" points donnees en entrees.
 {
 	npoints=nrow(P)
 	
@@ -439,9 +439,9 @@ return(tukdepths2)
 prodvect2<-function(P)
 #Cette fonction calcule un vecteur normal pour le plan passant par 3
 #points. 
-#Entrées: Une matrice représentant trois points caractérisant le plan 
+#Entrees: Une matrice representant trois points caracterisant le plan 
 #dont on veut calculer le vecteur normal.
-#Sortie: Un vecteur de dimension 3 représentant le vecteur normal.
+#Sortie: Un vecteur de dimension 3 representant le vecteur normal.
 {
   v=P[2,]-P[1,]
   w=P[3,]-P[1,]

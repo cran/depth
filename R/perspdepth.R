@@ -17,8 +17,6 @@ perspdepth=function(x,method="Tukey",output=FALSE,tt=50,xlab="X",ylab="Y",zlab=N
 # x= matrix n by p
 # method= which depth to use
 
-
-  require(rgl)
   match.arg(method,c("Tukey","Liu","Oja"))
   p=length(x[1,])
   n=length(x[,1])

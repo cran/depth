@@ -34,20 +34,20 @@ strmeasure=function(P,sorted=FALSE,depths=NULL,alpha=0,method="Mean"){
 # Functions used by strmeasure
 
 dirmoytronq=function(P,sort=FALSE,profondeurs=NULL,alpha=0)
-#Cette fonction calcule direction moyenne alpha-tronquée par la 
-#profondeur de Tukey pour un échantillon en position générale
-#Entrées obligatoires:	
-#-P: un échantillon de points du cercle en coordonnées polaires.
-#Entrées optionnels:
-#-sort=T si les points de l'échantillon ont été ordonnées.
+#Cette fonction calcule direction moyenne alpha-tronquee par la 
+#profondeur de Tukey pour un echantillon en position generale
+#Entrees obligatoires:	
+#-P: un echantillon de points du cercle en coordonnees polaires.
+#Entrees optionnels:
+#-sort=T si les points de l'echantillon ont ete ordonnees.
 #-profondeurs est un vecteur contenant la profondeur de Tukey de chacun 
-#des points de l'échantillon.
-#-le paramètre alpha de la mesure de la direction moyenne alpha-
-#tronquée. Si alpha=0, la mesure calculée correspond à la direction 
+#des points de l'echantillon.
+#-le parametre alpha de la mesure de la direction moyenne alpha-
+#tronquee. Si alpha=0, la mesure calculee correspond a la direction 
 #moyenne.
 #Sorties: 	
 #-Un nombre entre 0 et 2*pi donnant la direction moyenne alpha-
-#tronquée.
+#tronquee.
 {
   n=length(P)
 	
@@ -83,19 +83,19 @@ dirmoytronq=function(P,sort=FALSE,profondeurs=NULL,alpha=0)
 }
 
 sdirmoytronq=function(P,sort=FALSE,profondeurs=NULL,alpha=0)
-#Cette fonction calcule direction moyenne alpha-tronquée par la 
-#profondeur de Tukey pour un échantillon en position générale sur la sphère
-#Entrées obligatoires:	
-#-P: un échantillon de points de la sphère en coordonnées cartésiennes.
-#Entrées optionnels:
+#Cette fonction calcule direction moyenne alpha-tronquee par la 
+#profondeur de Tukey pour un echantillon en position generale sur la sphere
+#Entrees obligatoires:	
+#-P: un echantillon de points de la sphere en coordonnees cartesiennes.
+#Entrees optionnels:
 #-profondeurs est un vecteur contenant la profondeur de Tukey de chacun 
-#des points de l'échantillon.
-#-le paramètre alpha de la mesure de la direction moyenne alpha-
-#tronquée. Si alpha=0, la mesure calculée correspond à la direction 
+#des points de l'echantillon.
+#-le parametre alpha de la mesure de la direction moyenne alpha-
+#tronquee. Si alpha=0, la mesure calculee correspond a la direction 
 #moyenne.
 #Sortie: 	
-#-Un vecteur de longueur 3 donnant en coordonnées cartésiennes la direction 
-#moyenne alpha-tronquée.
+#-Un vecteur de longueur 3 donnant en coordonnees cartesiennes la direction 
+#moyenne alpha-tronquee.
 {
   n=length(P[,1])
 	
@@ -129,18 +129,18 @@ sdirmoytronq=function(P,sort=FALSE,profondeurs=NULL,alpha=0)
 }
 
 tukmedtronq=function(P,sort=FALSE,profondeurs=NULL,alpha=0)
-#Cette fonction calcule la médiane de Tukey alpha-tronquée
-#Entrée obligatoire:	
-#-P: un échantillon de points du cercle en coordonnées polaires.
-#Entrées optionnelles:
-#-sort=T si les points de l'échantillon ont été ordonnées.
+#Cette fonction calcule la mediane de Tukey alpha-tronquee
+#Entree obligatoire:	
+#-P: un echantillon de points du cercle en coordonnees polaires.
+#Entrees optionnelles:
+#-sort=T si les points de l'echantillon ont ete ordonnees.
 #-profondeurs est un vecteur contenant la profondeur de Tukey de 
-#chacun des points de l'échantillon.
-#-le paramètre alpha de la mesure de la direction moyenne alpha-
-#tronquée.
+#chacun des points de l'echantillon.
+#-le parametre alpha de la mesure de la direction moyenne alpha-
+#tronquee.
 #Sortie: 	
-#-Un nombre entre 0 et 2*pi donnant la médiane de Tukey 
-#alpha-tronquée.
+#-Un nombre entre 0 et 2*pi donnant la mediane de Tukey 
+#alpha-tronquee.
 {
   n=length(P)
   if(length(profondeurs)==0)
