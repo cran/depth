@@ -255,6 +255,7 @@ c------------------------------------------------------------------
 
       INTEGER FUNCTION K(M,J)
       integer m,j
+      k=-1
       IF (M.LT.J) THEN
           K=0
       ELSE
@@ -1107,6 +1108,9 @@ C     |________________________________________________________|
 C
       DOUBLE PRECISION V(LV,1),S,T
       INTEGER W(1),I,J,K,L,M,N,P,lv,ierr
+      
+      K=-1
+
       IF ( N .EQ. 1 ) GOTO 110
       L = 0
       M = 1
@@ -1319,6 +1323,9 @@ c
 c     ------------------------------------------------------------------
 c
       ierr = 0
+      s2=0
+      c3=0
+
       if (n .eq. 1) go to 1001
 c
       do i = 2, n
@@ -3160,10 +3167,14 @@ c        Analysis, vol.23, 153-168.
       double precision sum,tukmed(2),wx1(n),wy1(n),rand(2)
       double precision xcont(n*(n-1)/2),ycont(n*(n-1)/2),factor
  
-
+      khulp=0
+      moredith=0
       PI=DACOS(DBLE(-1.0))
       PI2=PI/2.0
       nrun=maxnum
+      xsum=0.d0
+      ysum=0.d0
+      hdep1=-1
 
       dith=0
       xind=0
@@ -3295,8 +3306,7 @@ C
 C     Calculation of the Tukey median
 C     
  
-      xsum=0
-      ysum=0
+
       tukmed(1)=0
       tukmed(2)=0
       if (n.le.3) then
@@ -3653,6 +3663,14 @@ C
       PI2=PI/2.0
 
       empty=0
+      xcord1=0.d0
+      ycord1=0.d0
+      iw2nu=-1
+      j=0
+      zoek=0
+      zold=0
+      iw1=1
+
 C
 C   (Re)initialize NCIRQ and NRANK
 C
@@ -4589,6 +4607,7 @@ CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 
 cc  initialize the random seed.
       nrun=0
+      lj=0
 
 cc  handle special case where n is equal to 1.
       if (n.eq.1)then
@@ -5067,6 +5086,7 @@ c --------------------------------------------------------------------
       integer n,indle,indge,indl,indg,imin,imax,j
       double precision aw(n),u,eps
 
+         indl=0
       if (u.lt.(aw(1)-eps)) then
          indge=n
          indle=0

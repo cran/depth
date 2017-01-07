@@ -1,12 +1,12 @@
-05932a0f36313b5538c7eaa9bc1da2bf *ChangeLog
-bf6dd9e6c45444048c5fea7eea801429 *DESCRIPTION
+ea076f4139cd871d89a0c524e0fec758 *ChangeLog
+933ca06ac8a7e2d0f5d3326a03bb5f16 *DESCRIPTION
 1243812686b81f44a606ae9fd2ba4fd8 *NAMESPACE
 cf7ded6cac1d1f5b42b43bb17dbad0ca *R/ctrmean.R
 c87099fffb817af35fb56aa70196c1bb *R/depth.R
 450a445b6a491723b49c97c8d1c0011d *R/isodepth.R
 980d754bf5a8a71e63afc71721b6d11b *R/med.R
 5e6cbe858aff9992f9a7beba29530b10 *R/perspdepth.R
-3d9b74780f59ab1833243c175e983f1b *R/scontour.R
+3eef746c939ac3acff986e0a59f55ec4 *R/scontour.R
 a58f03223c50d453e29cea53bc5c1002 *R/sdepth.R
 7d70635e871ed0a181e1e5ff5f411f5b *R/smed.R
 647f008b1926cd575de41f9613f5aeb1 *R/strmeasure.R
@@ -23,4 +23,4 @@ d8055ec51330029881f45bae5e7954b6 *man/sdepth.Rd
 aa67148f8b529c12a464e4a560b64651 *man/smed.Rd
 1d4923520cd351d34d66fb610991f5c2 *man/strmeasure.Rd
 4997b0e136936ffc72e6d760958384a7 *man/trmean.Rd
-96fdc0e58af60866f9fb7ed535bb1f59 *src/depth.f
+d8ba7737df0aca439722ba507f60bfe9 *src/depth.f

@@ -21,3 +21,8 @@
 2.1-0 (2016-12-15)
 
  - Fixing problems with fortran code compilation reported by CRAN.
+
+2.1-1 (2017-01-07)
+
+ - Fixing small issues in Fortran code (to clean the Valgrind output).
+ - Fixing R-devel warnings.

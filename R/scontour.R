@@ -1023,9 +1023,9 @@ tracearc=function(P1,P2,colarc="red")
 #-Les deux points.
 #-La couleur de l'arc.
 {
-  vperp=P2-((P1%*%P2)/(sqrt(P1%*%P1)))*P1
+  vperp=P2-((t(P1)%*%P2)/(sqrt(t(P1)%*%P1)))*P1
   vperp=vperp/(sqrt(vperp%*%vperp))
-  alpha=acos((P1%*%P2)/(sqrt(P1%*%P1)*sqrt(P2%*%P2)))
+  alpha=acos((t(P1)%*%P2)/(sqrt(t(P1)%*%P1)*sqrt(t(P2)%*%P2)))
   theta=seq(from=0,to=alpha,by=0.001)
   P=matrix(0,nrow=length(theta),ncol=3)
 	
